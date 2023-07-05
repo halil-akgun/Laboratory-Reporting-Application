@@ -1,10 +1,5 @@
 
-<div style="font-size: 33px; text-align: center;">
-  <br>
-  <b>LABORATORY REPORTING APPLICATION</b>
-</div> 
-
-# 
+# LABORATORY REPORTING APPLICATION
 
 ## TASKS
 - A simple laboratory reporting application will be developed using Spring, JPA, Maven, React technologies.
