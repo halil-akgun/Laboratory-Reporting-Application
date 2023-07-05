@@ -1,0 +1,17 @@
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: never
+spring:
+  datasource:
+    password: db_password
+    url: jdbc:postgresql://localhost:5432/laboratory-reporting-application
+    username: db_user
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+        format_sql: true
