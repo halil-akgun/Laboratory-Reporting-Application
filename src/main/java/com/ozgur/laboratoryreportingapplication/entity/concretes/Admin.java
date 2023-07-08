@@ -18,6 +18,4 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Admin extends User{
 
-	private boolean built_in; // so that it cannot be deleted
-
 }

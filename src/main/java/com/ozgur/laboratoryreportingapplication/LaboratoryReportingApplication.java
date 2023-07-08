@@ -1,5 +1,6 @@
 package com.ozgur.laboratoryreportingapplication;
 
+import com.ozgur.laboratoryreportingapplication.entity.concretes.Admin;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +11,9 @@ import com.ozgur.laboratoryreportingapplication.service.AdminService;
 import com.ozgur.laboratoryreportingapplication.service.UserRoleService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @RequiredArgsConstructor
 public class LaboratoryReportingApplication implements CommandLineRunner {
 
@@ -36,7 +38,7 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
 
 		// Create ADMIN (built_in)
 		if (adminService.countAllAdmin() == 0) {
-			RegisterRequest admin = new RegisterRequest();
+			Admin admin = new Admin();
 			admin.setUsername("admin");
 			admin.setPassword("12345678");
 			admin.setName("Admin");

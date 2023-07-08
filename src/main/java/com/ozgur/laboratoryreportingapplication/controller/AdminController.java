@@ -1,11 +1,7 @@
 package com.ozgur.laboratoryreportingapplication.controller;
 
-import javax.validation.Valid;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.ozgur.laboratoryreportingapplication.dto.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.service.AdminService;
 
 @RestController
@@ -19,10 +15,5 @@ public class AdminController {
 		this.adminService = adminService;
 	}
 
-	@PostMapping("/save")
-	@ResponseStatus(HttpStatus.CREATED)
-	public void save(@Valid @RequestBody RegisterRequest request) {
-		adminService.save(request);
-	}
 
 }
