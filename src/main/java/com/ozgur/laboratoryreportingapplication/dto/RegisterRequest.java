@@ -18,11 +18,19 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 public class RegisterRequest {
 
+/*
+    UniqueUsername and UniqueHospitalIdNumber checks could not be made when a request did not pass
+    other validations. In this way, the user will not have to correct the form for the 2nd time.
+
+    For example: surname=null and the entered username exists in the db. In this case, if there is no
+    UniqueUsername annotation, only the error message about the username will be displayed.
+*/
+
+    @UniqueUsername
+    @NotAdmin
     @NotBlank(message = "This field cannot be left blank")
     @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "Your username must consist of the characters.")
     @Size(min = 2, max = 20, message = "Username '${validatedValue}' must be between {min} and {max} chars long")
-    @UniqueUsername
-    @NotAdmin
     private String username;
 
     @NotBlank(message = "This field cannot be left blank")
@@ -35,10 +43,10 @@ public class RegisterRequest {
     @Size(min = 2, max = 20, message = "Surname '${validatedValue}' must be between {min} and {max} chars long")
     private String surname;
 
+    @UniqueHospitalIdNumber
     @NotBlank(message = "This field cannot be left blank")
     @Pattern(regexp = "\\d+", message = "Hospital ID Number must consist of digits only.")
     @Size(min = 7, max = 7, message = "Hospital ID Number '${validatedValue}' must be {max} chars long")
-    @UniqueHospitalIdNumber
     private String hospitalIdNumber;
 
     @NotBlank(message = "This field cannot be left blank")

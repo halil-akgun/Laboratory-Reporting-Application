@@ -17,6 +17,8 @@ public class UniqueHospitalIdNumberValidator implements ConstraintValidator<Uniq
     @Override
     public boolean isValid(String hospitalIdNumber, ConstraintValidatorContext context) {
 
+        if (hospitalIdNumber == null) return true;
+
         Optional<Assistant> assistant = assistantRepository.findByHospitalIdNumber(hospitalIdNumber);
 
         return assistant.isEmpty();

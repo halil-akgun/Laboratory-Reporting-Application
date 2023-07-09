@@ -17,6 +17,8 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
     @Override
     public boolean isValid(String username, ConstraintValidatorContext context) {
 
+        if (username == null) return true;
+
         Optional<Assistant> assistant = assistantRepository.findByUsername(username);
 
         return assistant.isEmpty();
