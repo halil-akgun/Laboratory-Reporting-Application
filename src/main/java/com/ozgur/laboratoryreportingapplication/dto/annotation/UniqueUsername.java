@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface UniqueUsername {
 
-    String message() default "Already registered with this username.";
+    String message() default "{validation.constraints.UniqueUsername.username.message}";
 
     Class<?>[] groups() default { };
 

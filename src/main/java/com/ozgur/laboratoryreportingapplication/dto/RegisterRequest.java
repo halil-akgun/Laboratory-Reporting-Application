@@ -28,30 +28,30 @@ public class RegisterRequest {
 
     @UniqueUsername
     @NotAdmin
-    @NotBlank(message = "This field cannot be left blank")
-    @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "Your username must consist of the characters.")
-    @Size(min = 2, max = 20, message = "Username '${validatedValue}' must be between {min} and {max} chars long")
+    @NotBlank(message = "{validation.constraints.NotBlank.username.message}")
+    @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "{validation.constraints.Pattern.username.message}")
+    @Size(min = 2, max = 20, message = "{validation.constraints.Size.username.message}")
     private String username;
 
-    @NotBlank(message = "This field cannot be left blank")
-    @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "Your name must consist of the characters.")
-    @Size(min = 2, max = 20, message = "Name '${validatedValue}' must be between {min} and {max} chars long")
+    @NotBlank(message = "{validation.constraints.NotBlank.name.message}")
+    @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "{validation.constraints.Pattern.name.message}")
+    @Size(min = 2, max = 20, message = "{validation.constraints.Size.name.message}")
     private String name;
 
-    @NotBlank(message = "This field cannot be left blank")
-    @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "Your surname must consist of the characters.")
-    @Size(min = 2, max = 20, message = "Surname '${validatedValue}' must be between {min} and {max} chars long")
+    @NotBlank(message = "{validation.constraints.NotBlank.surname.message}")
+    @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "{validation.constraints.Pattern.surname.message}")
+    @Size(min = 2, max = 20, message = "{validation.constraints.Size.surname.message}")
     private String surname;
 
     @UniqueHospitalIdNumber
-    @NotBlank(message = "This field cannot be left blank")
-    @Pattern(regexp = "\\d+", message = "Hospital ID Number must consist of digits only.")
-    @Size(min = 7, max = 7, message = "Hospital ID Number '${validatedValue}' must be {max} chars long")
+    @NotBlank(message = "{validation.constraints.NotBlank.hospitalIdNumber.message}")
+    @Pattern(regexp = "\\d+", message = "{validation.constraints.Pattern.hospitalIdNumber.message}")
+    @Size(min = 7, max = 7, message = "{validation.constraints.Size.hospitalIdNumber.message}")
     private String hospitalIdNumber;
 
-    @NotBlank(message = "This field cannot be left blank")
-    @Size(min = 8, max = 30, message = "Password '${validatedValue}' must be between {min} and {max} chars long")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "Password must contain at least one lowercase letter, uppercase letter and digit.")
+    @NotBlank(message = "{validation.constraints.NotBlank.password.message}")
+    @Size(min = 8, max = 30, message = "{validation.constraints.Size.password.message}")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "{validation.constraints.Pattern.password.message}")
     private String password;
 
 }

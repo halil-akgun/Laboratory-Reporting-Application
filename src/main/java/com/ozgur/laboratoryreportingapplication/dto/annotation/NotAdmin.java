@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface NotAdmin {
 
-    String message() default "You cannot use the username 'ADMIN'.";
+    String message() default "{validation.constraints.username.NotAdmin.message}";
 
     Class<?>[] groups() default { };
 

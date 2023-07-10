@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface UniqueHospitalIdNumber {
 
-    String message() default "Already registered with this Hospital Id Number.";
+    String message() default "{validation.constraints.UniqueHospitalIdNumber.hospitalIdNumber.message}";
 
     Class<?>[] groups() default { };
 
