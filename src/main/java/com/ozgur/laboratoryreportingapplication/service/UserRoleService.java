@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ozgur.laboratoryreportingapplication.entity.concretes.UserRole;
+import com.ozgur.laboratoryreportingapplication.entity.UserRole;
 import com.ozgur.laboratoryreportingapplication.entity.enums.RoleType;
 import com.ozgur.laboratoryreportingapplication.exception.ConflictException;
 import com.ozgur.laboratoryreportingapplication.repository.UserRoleRepository;

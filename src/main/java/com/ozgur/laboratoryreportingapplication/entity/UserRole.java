@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.entity.concretes;
+package com.ozgur.laboratoryreportingapplication.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

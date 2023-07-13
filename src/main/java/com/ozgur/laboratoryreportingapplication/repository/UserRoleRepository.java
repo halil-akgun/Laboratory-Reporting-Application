@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ozgur.laboratoryreportingapplication.entity.concretes.UserRole;
+import com.ozgur.laboratoryreportingapplication.entity.UserRole;
 import com.ozgur.laboratoryreportingapplication.entity.enums.RoleType;
 
 public interface UserRoleRepository extends JpaRepository<UserRole, Integer>{

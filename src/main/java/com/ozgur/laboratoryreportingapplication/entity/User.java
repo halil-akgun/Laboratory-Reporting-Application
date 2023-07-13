@@ -1,21 +1,19 @@
-package com.ozgur.laboratoryreportingapplication.entity.abstracts;
+package com.ozgur.laboratoryreportingapplication.entity;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ozgur.laboratoryreportingapplication.entity.concretes.UserRole;
-
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
-@MappedSuperclass// The fields in this class are created in the tables in the db of the entity classes that extend this class.
+@Entity
+@Table(name = "tbl_user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
-public abstract class User {
+@Builder(toBuilder = true)
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
