@@ -5,7 +5,7 @@ import com.ozgur.laboratoryreportingapplication.dto.RegisterResponse;
 import com.ozgur.laboratoryreportingapplication.dto.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.entity.enums.RoleType;
-import com.ozgur.laboratoryreportingapplication.exception.ConflictException;
+import com.ozgur.laboratoryreportingapplication.error.ConflictException;
 import com.ozgur.laboratoryreportingapplication.repository.UserRepository;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import com.ozgur.laboratoryreportingapplication.utils.Messages;

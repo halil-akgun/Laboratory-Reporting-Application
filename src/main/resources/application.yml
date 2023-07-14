@@ -15,6 +15,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL81Dialect
         format_sql: true
+
 logging: # logging
   file:
     name: log/laboratoryapp.log
