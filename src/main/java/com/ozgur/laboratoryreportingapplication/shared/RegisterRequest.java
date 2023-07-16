@@ -1,12 +1,12 @@
-package com.ozgur.laboratoryreportingapplication.dto;
+package com.ozgur.laboratoryreportingapplication.shared;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.ozgur.laboratoryreportingapplication.dto.annotation.NotAdmin;
-import com.ozgur.laboratoryreportingapplication.dto.annotation.UniqueHospitalIdNumber;
-import com.ozgur.laboratoryreportingapplication.dto.annotation.UniqueUsername;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.NotAdmin;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueHospitalIdNumber;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueUsername;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

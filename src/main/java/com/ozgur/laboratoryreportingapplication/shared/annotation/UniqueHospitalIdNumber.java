@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.dto.annotation;
+package com.ozgur.laboratoryreportingapplication.shared.annotation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -8,12 +8,12 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Constraint(validatedBy = { NotAdminValidator.class })
+@Constraint(validatedBy = { UniqueHospitalIdNumberValidator.class })
 @Target({  FIELD })
 @Retention(RUNTIME)
-public @interface NotAdmin {
+public @interface UniqueHospitalIdNumber {
 
-    String message() default "{validation.constraints.username.NotAdmin.message}";
+    String message() default "{validation.constraints.UniqueHospitalIdNumber.hospitalIdNumber.message}";
 
     Class<?>[] groups() default { };
 

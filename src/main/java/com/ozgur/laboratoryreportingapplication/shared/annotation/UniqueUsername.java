@@ -1,19 +1,19 @@
-package com.ozgur.laboratoryreportingapplication.dto.annotation;
+package com.ozgur.laboratoryreportingapplication.shared.annotation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Constraint(validatedBy = { UniqueHospitalIdNumberValidator.class })
+@Constraint(validatedBy = { UniqueUsernameValidator.class })
 @Target({  FIELD })
 @Retention(RUNTIME)
-public @interface UniqueHospitalIdNumber {
+public @interface UniqueUsername {
 
-    String message() default "{validation.constraints.UniqueHospitalIdNumber.hospitalIdNumber.message}";
+    String message() default "{validation.constraints.UniqueUsername.username.message}";
 
     Class<?>[] groups() default { };
 

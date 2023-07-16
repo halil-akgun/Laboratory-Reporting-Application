@@ -1,8 +1,8 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
-import com.ozgur.laboratoryreportingapplication.dto.RegisterRequest;
-import com.ozgur.laboratoryreportingapplication.dto.RegisterResponse;
-import com.ozgur.laboratoryreportingapplication.dto.ResponseMessage;
+import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
+import com.ozgur.laboratoryreportingapplication.shared.RegisterResponse;
+import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.entity.enums.RoleType;
 import com.ozgur.laboratoryreportingapplication.error.ConflictException;

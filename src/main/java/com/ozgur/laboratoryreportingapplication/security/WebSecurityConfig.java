@@ -21,7 +21,6 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     private final UserDetailsServiceImpl userDetailsService;
-    private final AuthEntryPoint authEntryPoint;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -54,9 +53,9 @@ public class WebSecurityConfig {
                 .authorizeRequests().antMatchers(AUTH_WHITE_LIST).permitAll()
                 .anyRequest().authenticated();
 
-        http.httpBasic().authenticationEntryPoint(authEntryPoint);
+        http.httpBasic().authenticationEntryPoint(new AuthEntryPoint());
 
-        http.authenticationProvider(authenticationProvider()); // Provider introduction
+//        http.authenticationProvider(authenticationProvider()); // Provider introduction
 
         return http.build();
     }

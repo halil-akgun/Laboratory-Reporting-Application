@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.dto.annotation;
+package com.ozgur.laboratoryreportingapplication.shared.annotation;
 
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.repository.UserRepository;
@@ -8,19 +8,18 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Optional;
 
-public class UniqueHospitalIdNumberValidator implements ConstraintValidator<UniqueHospitalIdNumber, String> {
+public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public boolean isValid(String hospitalIdNumber, ConstraintValidatorContext context) {
+    public boolean isValid(String username, ConstraintValidatorContext context) {
 
-        if (hospitalIdNumber == null) return true;
+        if (username == null) return true;
 
-        Optional<User> user = userRepository.findByHospitalIdNumber(hospitalIdNumber);
+        Optional<User> user = userRepository.findByUsername(username);
 
         return user.isEmpty();
     }
-
 }

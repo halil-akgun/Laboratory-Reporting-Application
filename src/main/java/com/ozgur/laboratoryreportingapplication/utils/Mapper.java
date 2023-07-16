@@ -1,11 +1,11 @@
 package com.ozgur.laboratoryreportingapplication.utils;
 
-import com.ozgur.laboratoryreportingapplication.dto.LoginResponse;
-import com.ozgur.laboratoryreportingapplication.dto.RegisterResponse;
+import com.ozgur.laboratoryreportingapplication.shared.LoginResponse;
+import com.ozgur.laboratoryreportingapplication.shared.RegisterResponse;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import org.springframework.stereotype.Component;
 
-import com.ozgur.laboratoryreportingapplication.dto.RegisterRequest;
+import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 
 @Component
 public class Mapper {

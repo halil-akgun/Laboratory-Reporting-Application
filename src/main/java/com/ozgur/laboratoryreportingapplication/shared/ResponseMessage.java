@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.dto;
+package com.ozgur.laboratoryreportingapplication.shared;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

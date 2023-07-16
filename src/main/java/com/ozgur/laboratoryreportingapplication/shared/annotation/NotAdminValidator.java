@@ -1,8 +1,7 @@
-package com.ozgur.laboratoryreportingapplication.dto.annotation;
+package com.ozgur.laboratoryreportingapplication.shared.annotation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.NotNull;
 
 public class NotAdminValidator implements ConstraintValidator<NotAdmin, String> {
 
