@@ -69,7 +69,8 @@ public class WebSecurityConfig {
             "/swagger-ui/**",
             "/swagger*/**", // aslinda yukaridakini de kapsiyor - swagger* : * ile devami ne olursa kapsar
             "/v3/api-docs/**",
-            "/assistants/save",
+            "/users/save",
+            "/users/getUsers",
             "/auth/login"
     };
 }

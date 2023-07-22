@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface NotAdmin {
 
-    String message() default "{validation.constraints.username.NotAdmin.message}";
+    String message() default "{validation.constraints.NotAdmin.username.message}";
 
     Class<?>[] groups() default { };
 

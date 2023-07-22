@@ -2,6 +2,7 @@ package com.ozgur.laboratoryreportingapplication;
 
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.service.UserService;
+import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +23,7 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
         SpringApplication.run(LaboratoryReportingApplication.class, args);
     }
 
-//  CommandLineRunner is implemented and the run method is overridden.
+    //  CommandLineRunner is implemented and the run method is overridden.
 //	In this way, when the application starts working, the following methods will be run first.
     @Override
     public void run(String... args) {
@@ -42,6 +43,17 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
             admin.setSurname("Admin");
             admin.setHospitalIdNumber("0000000");
             userService.saveAdmin(admin);
+        }
+
+        for (int i = 1; i < 33; i++) {
+            RegisterRequest user = new RegisterRequest();
+            user.setUsername("user" + i);
+            user.setPassword("12345678");
+            user.setName("Name" + i);
+            user.setSurname("Surname" + i);
+            if (i < 10) user.setHospitalIdNumber("000000" + i);
+            else user.setHospitalIdNumber("00000" + i);
+            userService.saveUser(user);
         }
     }
 }

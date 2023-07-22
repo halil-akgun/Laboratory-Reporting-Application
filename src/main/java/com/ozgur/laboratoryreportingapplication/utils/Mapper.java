@@ -1,7 +1,7 @@
 package com.ozgur.laboratoryreportingapplication.utils;
 
 import com.ozgur.laboratoryreportingapplication.shared.LoginResponse;
-import com.ozgur.laboratoryreportingapplication.shared.RegisterResponse;
+import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ public class Mapper {
                 .username(user.getUsername()).build();
     }
 
-    public User createAssistantFromRegisterRequest(RegisterRequest request) {
+    public User createUserFromRegisterRequest(RegisterRequest request) {
         return User.builder()
                 .username(request.getUsername())
                 .name(request.getName())
@@ -27,8 +27,8 @@ public class Mapper {
                 .build();
     }
 
-    public RegisterResponse createRegisterResponseFromAssistant(User assistant) {
-        return RegisterResponse.builder()
+    public UserResponse createUserResponseFromAssistant(User assistant) {
+        return UserResponse.builder()
                 .username(assistant.getUsername())
                 .name(assistant.getName())
                 .surname(assistant.getSurname())

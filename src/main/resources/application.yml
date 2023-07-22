@@ -15,6 +15,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL81Dialect
         format_sql: true
+  data:
+    web:
+      pageable:
+        default-page-size: 5
+        max-page-size: 100
 
 logging: # logging
   file:
