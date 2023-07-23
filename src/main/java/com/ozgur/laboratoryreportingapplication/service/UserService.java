@@ -1,5 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
+import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
@@ -59,7 +60,11 @@ public class UserService {
                 .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
 
-    public Page<UserResponse> getUsers(Pageable pageable) {
+    public Page<UserResponse> getUsers(Pageable pageable, UserDetailsImpl userDetails) {
+        if (userDetails != null) {
+            return userRepository.findByUsernameNot(pageable, userDetails.getUsername())
+                    .map(mapper::createUserResponseFromAssistant);
+        }
         return userRepository.findAll(pageable).map(mapper::createUserResponseFromAssistant);
     }
 }
