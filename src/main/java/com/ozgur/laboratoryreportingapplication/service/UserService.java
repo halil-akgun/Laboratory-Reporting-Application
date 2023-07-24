@@ -1,5 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
+import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
 import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
@@ -41,10 +42,10 @@ public class UserService {
 
     public ResponseMessage<UserResponse> saveUser(RegisterRequest request) {
         userRepository.findByUsername(request.getUsername()).ifPresent(assistant -> {
-            throw new ConflictException(String.format(Messages.ALREADY_REGISTER_MESSAGE_USERNAME, request.getUsername()));
+            throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_USERNAME, request.getUsername()));
         });
         userRepository.findByHospitalIdNumber(request.getHospitalIdNumber()).ifPresent(assistant -> {
-            throw new ConflictException(String.format(Messages.ALREADY_REGISTER_MESSAGE_HOSPITAL_ID_NUMBER, request.getHospitalIdNumber()));
+            throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_HOSPITAL_ID_NUMBER, request.getHospitalIdNumber()));
         });
 
         User user = mapper.createUserFromRegisterRequest(request);
@@ -60,11 +61,17 @@ public class UserService {
                 .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
 
-    public Page<UserResponse> getUsers(Pageable pageable, UserDetailsImpl userDetails) {
+    public Page<UserResponse> getAllUsers(Pageable pageable, UserDetailsImpl userDetails) {
         if (userDetails != null) {
             return userRepository.findByUsernameNot(pageable, userDetails.getUsername())
                     .map(mapper::createUserResponseFromAssistant);
         }
         return userRepository.findAll(pageable).map(mapper::createUserResponseFromAssistant);
+    }
+
+    public UserResponse getUser(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
+        return mapper.createUserResponseFromAssistant(user);
     }
 }

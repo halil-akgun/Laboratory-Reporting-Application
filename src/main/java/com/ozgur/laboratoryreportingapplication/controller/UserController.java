@@ -34,10 +34,15 @@ public class UserController {
         return response;
     }
 
-    @GetMapping("getUsers")
-    @PreAuthorize("hasAnyAuthorization('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
-    Page<UserResponse> getUsers(Pageable pageable, @CurrentUser UserDetailsImpl userDetails) {
-        return userService.getUsers(pageable, userDetails);
+    @GetMapping("getAllUsers")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    Page<UserResponse> getAllUsers(Pageable pageable, @CurrentUser UserDetailsImpl userDetails) {
+        return userService.getAllUsers(pageable, userDetails);
     }
 
+    @GetMapping("/{username}")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    UserResponse getUser(@PathVariable String username) {
+        return userService.getUser(username);
+    }
 }
