@@ -3,6 +3,7 @@ package com.ozgur.laboratoryreportingapplication.service;
 import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
 import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
+import com.ozgur.laboratoryreportingapplication.shared.UpdateUserRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.entity.User;
@@ -73,5 +74,29 @@ public class UserService {
         User user = userRepository.findByUsername(username).orElseThrow(() ->
                 new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
         return mapper.createUserResponseFromAssistant(user);
+    }
+
+    public ResponseMessage<UserResponse> updateUser(String username, UpdateUserRequest request) {
+        User user = userRepository.findByUsername(username).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
+
+        if (!username.equals(request.getUsername()) && userRepository.existsByUsername(request.getUsername()))
+            throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_USERNAME, request.getUsername()));
+        if (!user.getHospitalIdNumber().equals(request.getHospitalIdNumber())
+                && userRepository.existsByHospitalIdNumber(request.getHospitalIdNumber()))
+            throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_HOSPITAL_ID_NUMBER, request.getHospitalIdNumber()));
+
+        if (request.getName() != null) user.setName(request.getName());
+        if (request.getSurname() != null) user.setSurname(request.getSurname());
+        if (request.getUsername() != null) user.setUsername(request.getUsername());
+        if (request.getHospitalIdNumber() != null) user.setHospitalIdNumber(request.getHospitalIdNumber());
+        if (request.getPassword() != null) user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        User savedUser = userRepository.save(user);
+
+        return ResponseMessage.<UserResponse>builder()
+                .message("User updated.")
+                .httpStatus(HttpStatus.OK)
+                .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
 }

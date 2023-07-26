@@ -2,6 +2,7 @@ package com.ozgur.laboratoryreportingapplication.controller;
 
 import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
+import com.ozgur.laboratoryreportingapplication.shared.UpdateUserRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.service.UserService;
@@ -44,5 +45,11 @@ public class UserController {
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
     UserResponse getUser(@PathVariable String username) {
         return userService.getUser(username);
+    }
+
+    @PutMapping("/{username}")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    ResponseMessage<UserResponse> updateUser(@PathVariable String username, @Valid @RequestBody UpdateUserRequest request) {
+        return userService.updateUser(username, request);
     }
 }

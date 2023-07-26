@@ -1,9 +1,5 @@
 package com.ozgur.laboratoryreportingapplication.shared;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import com.ozgur.laboratoryreportingapplication.shared.annotation.NotAdmin;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueHospitalIdNumber;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueUsername;
@@ -12,22 +8,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class RegisterRequest {
+public class UpdateUserRequest {
 
-/*
-    UniqueUsername and UniqueHospitalIdNumber checks could not be made when a request did not pass
-    other validations. In this way, the user will not have to correct the form for the 2nd time.
-
-    For example: name=null and the entered username exists in the db. In this case, if there is no
-    UniqueUsername annotation, only the error message about the name will be displayed.
-*/
-
-    @UniqueUsername
-    @NotAdmin
     @NotBlank(message = "{validation.constraints.NotBlank.username.message}")
     @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "{validation.constraints.Pattern.username.message}")
     @Size(min = 2, max = 20, message = "{validation.constraints.Size.username.message}")
@@ -43,7 +33,6 @@ public class RegisterRequest {
     @Size(min = 2, max = 20, message = "{validation.constraints.Size.surname.message}")
     private String surname;
 
-    @UniqueHospitalIdNumber
     @NotBlank(message = "{validation.constraints.NotBlank.hospitalIdNumber.message}")
     @Pattern(regexp = "\\d+", message = "{validation.constraints.Pattern.hospitalIdNumber.message}")
     @Size(min = 7, max = 7, message = "{validation.constraints.Size.hospitalIdNumber.message}")
