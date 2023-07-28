@@ -1,5 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.security;
 
+import com.ozgur.laboratoryreportingapplication.error.CustomAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @EnableWebSecurity
 @Configuration
@@ -43,6 +45,11 @@ public class WebSecurityConfig {
         return authConfig.getAuthenticationManager();
     }
 
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
+    }
+
     @Bean // in the old version we did this by @Override the configure method
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 // cors(): browser-based security - when a request is received from a different
@@ -51,9 +58,12 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers(AUTH_WHITE_LIST).permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic().authenticationEntryPoint(new AuthEntryPoint())
+                .and()
+                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler());
 
-        http.httpBasic().authenticationEntryPoint(new AuthEntryPoint());
 
 //        http.authenticationProvider(authenticationProvider()); // Provider introduction
 

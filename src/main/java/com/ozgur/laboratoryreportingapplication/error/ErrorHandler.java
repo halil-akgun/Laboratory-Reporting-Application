@@ -21,6 +21,7 @@ public class ErrorHandler implements ErrorController {
 
     @RequestMapping("/error")
     ApiError handleError(WebRequest webRequest) {
+        System.out.println("ErrorHandler");
         Map<String, Object> attributes = this.errorAttributes.getErrorAttributes(webRequest, ErrorAttributeOptions.of(ErrorAttributeOptions.Include.MESSAGE, ErrorAttributeOptions.Include.BINDING_ERRORS));
         String message = (String)attributes.get("message");
         String path = (String) attributes.get("path");

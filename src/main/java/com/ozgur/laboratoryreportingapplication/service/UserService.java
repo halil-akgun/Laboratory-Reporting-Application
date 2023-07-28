@@ -90,7 +90,7 @@ public class UserService {
         if (request.getSurname() != null) user.setSurname(request.getSurname());
         if (request.getUsername() != null) user.setUsername(request.getUsername());
         if (request.getHospitalIdNumber() != null) user.setHospitalIdNumber(request.getHospitalIdNumber());
-        if (request.getPassword() != null) user.setPassword(passwordEncoder.encode(request.getPassword()));
+        if (request.getImage() != null) user.setImage(request.getImage());
 
         User savedUser = userRepository.save(user);
 

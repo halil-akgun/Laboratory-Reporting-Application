@@ -15,6 +15,7 @@ public class Mapper {
                 .hospitalIdNumber(user.getHospitalIdNumber())
                 .name(user.getName())
                 .surname(user.getSurname())
+                .image(user.getImage())
                 .username(user.getUsername()).build();
     }
 
@@ -32,6 +33,7 @@ public class Mapper {
                 .username(assistant.getUsername())
                 .name(assistant.getName())
                 .surname(assistant.getSurname())
+                .image(assistant.getImage())
                 .hospitalIdNumber(assistant.getHospitalIdNumber())
                 .build();
     }

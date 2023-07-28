@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Lob;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,5 +22,7 @@ public class UserResponse {
     private String surname;
 
     private String hospitalIdNumber;
+
+    private String image;
 
 }
