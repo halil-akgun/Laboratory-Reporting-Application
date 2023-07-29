@@ -37,7 +37,6 @@ public class User {
     @ManyToOne
     private UserRole userRole;
 
-    @Column(columnDefinition = "text")
     private String image;
 
 }

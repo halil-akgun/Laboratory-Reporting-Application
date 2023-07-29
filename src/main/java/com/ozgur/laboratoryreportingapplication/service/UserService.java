@@ -10,6 +10,7 @@ import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.entity.enums.RoleType;
 import com.ozgur.laboratoryreportingapplication.error.ConflictException;
 import com.ozgur.laboratoryreportingapplication.repository.UserRepository;
+import com.ozgur.laboratoryreportingapplication.utils.FileService;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import com.ozgur.laboratoryreportingapplication.utils.Messages;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -27,6 +30,7 @@ public class UserService {
     private final Mapper mapper;
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
+    private final FileService fileService;
 
 
     public void saveAdmin(User user) {
@@ -63,11 +67,8 @@ public class UserService {
     }
 
     public Page<UserResponse> getAllUsers(Pageable pageable, UserDetailsImpl userDetails) {
-        if (userDetails != null) {
-            return userRepository.findByUsernameNot(pageable, userDetails.getUsername())
-                    .map(mapper::createUserResponseFromAssistant);
-        }
-        return userRepository.findAll(pageable).map(mapper::createUserResponseFromAssistant);
+        return userRepository.findByUsernameNot(pageable, userDetails.getUsername())
+                .map(mapper::createUserResponseFromAssistant);
     }
 
     public UserResponse getUser(String username) {
@@ -90,7 +91,14 @@ public class UserService {
         if (request.getSurname() != null) user.setSurname(request.getSurname());
         if (request.getUsername() != null) user.setUsername(request.getUsername());
         if (request.getHospitalIdNumber() != null) user.setHospitalIdNumber(request.getHospitalIdNumber());
-        if (request.getImage() != null) user.setImage(request.getImage());
+        if (request.getImage() != null) {
+            try {
+                String imageName = fileService.writeBase64EncodedStringToFile(request.getImage());
+                user.setImage(imageName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         User savedUser = userRepository.save(user);
 
@@ -99,4 +107,5 @@ public class UserService {
                 .httpStatus(HttpStatus.OK)
                 .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
+
 }
