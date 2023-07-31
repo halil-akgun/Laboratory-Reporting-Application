@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.security;
+package com.ozgur.laboratoryreportingapplication.configuration;
 
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;

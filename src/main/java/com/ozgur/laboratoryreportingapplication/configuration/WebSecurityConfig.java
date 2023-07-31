@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.security;
+package com.ozgur.laboratoryreportingapplication.configuration;
 
 import com.ozgur.laboratoryreportingapplication.error.CustomAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
@@ -80,6 +80,8 @@ public class WebSecurityConfig {
             "/swagger*/**", // aslinda yukaridakini de kapsiyor - swagger* : * ile devami ne olursa kapsar
             "/v3/api-docs/**",
             "/users/save",
+            "/users/images/**",
+            "/images/**",
             "/users/getUsers"
     };
 }

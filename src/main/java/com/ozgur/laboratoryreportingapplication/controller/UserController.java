@@ -1,6 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.controller;
 
-import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UpdateUserRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;

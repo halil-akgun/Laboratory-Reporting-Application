@@ -13,7 +13,7 @@ import java.util.UUID;
 public class FileService {
     public String writeBase64EncodedStringToFile(String image) throws IOException {
         String imageName = generateRandomName();
-        File target = new File("src/main/java/com/ozgur/laboratoryreportingapplication/uploads/profilepictures/" + imageName);
+        File target = new File("uploads/profilepictures/" + imageName);
         OutputStream outputStream = new FileOutputStream(target);
         byte[] base64encoded = Base64.getDecoder().decode(image);
         outputStream.write(base64encoded);

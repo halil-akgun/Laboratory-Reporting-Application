@@ -1,10 +1,6 @@
-package com.ozgur.laboratoryreportingapplication.security;
+package com.ozgur.laboratoryreportingapplication.configuration;
 
 import com.ozgur.laboratoryreportingapplication.entity.User;
-import com.ozgur.laboratoryreportingapplication.entity.enums.RoleType;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.ozgur.laboratoryreportingapplication.security;
+package com.ozgur.laboratoryreportingapplication.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

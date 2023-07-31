@@ -1,6 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.controller;
 
-import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.CurrentUser;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import org.slf4j.Logger;

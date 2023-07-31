@@ -1,7 +1,7 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
 import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
-import com.ozgur.laboratoryreportingapplication.security.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UpdateUserRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
