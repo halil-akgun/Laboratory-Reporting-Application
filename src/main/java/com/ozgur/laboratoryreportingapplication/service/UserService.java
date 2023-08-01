@@ -92,12 +92,14 @@ public class UserService {
         if (request.getUsername() != null) user.setUsername(request.getUsername());
         if (request.getHospitalIdNumber() != null) user.setHospitalIdNumber(request.getHospitalIdNumber());
         if (request.getImage() != null) {
+            String oldImageName = user.getImage();
             try {
                 String imageName = fileService.writeBase64EncodedStringToFile(request.getImage());
                 user.setImage(imageName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            fileService.deleteFile(oldImageName);
         }
 
         User savedUser = userRepository.save(user);

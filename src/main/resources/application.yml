@@ -1,3 +1,13 @@
+logging: # logging
+  file:
+    name: log/laboratoryapp.log
+  pattern:
+    file: "%d %-5level [%thread] %logger:%msg%n"
+  level:
+    '[org.springframework.web]': WARN
+    '[org.hibernate]': INFO
+    '[com.ozgur]': INFO
+
 server:
   error:
     include-binding-errors: always
@@ -20,17 +30,25 @@ spring:
       pageable:
         default-page-size: 5
         max-page-size: 100
+  profiles:
+    active:
+      - dev
 
-logging: # logging
-  file:
-    name: log/laboratoryapp.log
-  pattern:
-    file: "%d %-5level [%thread] %logger:%msg%n"
-  level:
-    '[org.springframework.web]': WARN
-    '[org.hibernate]': INFO
-    '[com.ozgur]': INFO
+# Before Spring Boot 2.4, the order in (profiles) 'active' was important,
+# for 2.4 and later the order of the codes below is important. (The last one is valid.)
 
+laboratory:
+  upload-path: uploads/profilepictures/
+---
+spring:
+  profiles: production
+laboratory:
+  upload-path: uploads-production/profilepictures/
+---
+spring:
+  profiles: dev
+laboratory:
+  upload-path: uploads-dev/profilepictures/
 
 #  %d:       Represents date and time information.
 #  %-5level: Represents the log level. In this case, the log level is displayed five characters wide, aligned to the left.
