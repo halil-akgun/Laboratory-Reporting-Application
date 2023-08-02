@@ -1,7 +1,7 @@
 package com.ozgur.laboratoryreportingapplication.utils;
 
 import com.ozgur.laboratoryreportingapplication.configuration.AppConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.tika.Tika;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -16,8 +16,14 @@ import java.util.UUID;
 @Service
 public class FileService {
 
-    @Autowired
     AppConfiguration appConfiguration;
+    Tika tika;
+
+    public FileService(AppConfiguration appConfiguration) {
+        super();
+        this.appConfiguration = appConfiguration;
+        this.tika = new Tika();
+    }
 
     public String writeBase64EncodedStringToFile(String image) throws IOException {
         String imageName = generateRandomName();
@@ -40,5 +46,10 @@ public class FileService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String detectType(String value) {
+        byte[] base64encoded = Base64.getDecoder().decode(value);
+        return tika.detect(base64encoded);
     }
 }

@@ -1,5 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.shared;
 
+import com.ozgur.laboratoryreportingapplication.shared.annotation.FileType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,5 +36,6 @@ public class UpdateUserRequest {
     @Size(min = 7, max = 7, message = "{validation.constraints.Size.hospitalIdNumber.message}")
     private String hospitalIdNumber;
 
+    @FileType(types = {"jpg", "jpeg", "png"})
     private String image;
 }
