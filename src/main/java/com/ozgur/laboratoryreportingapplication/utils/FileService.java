@@ -25,9 +25,19 @@ public class FileService {
         this.tika = new Tika();
     }
 
-    public String writeBase64EncodedStringToFile(String image) throws IOException {
+    public String writeBase64EncodedStringToFileForProfilePicture(String image) throws IOException {
         String imageName = generateRandomName();
-        File target = new File(appConfiguration.getUploadPath() + imageName);
+        File target = new File(appConfiguration.getUploadPathForProfilePicture() + imageName);
+        OutputStream outputStream = new FileOutputStream(target);
+        byte[] base64encoded = Base64.getDecoder().decode(image);
+        outputStream.write(base64encoded);
+        outputStream.close();
+        return imageName;
+    }
+
+    public String writeBase64EncodedStringToFileForReportPicture(String image) throws IOException {
+        String imageName = generateRandomName();
+        File target = new File(appConfiguration.getUploadPathForReportPicture() + imageName);
         OutputStream outputStream = new FileOutputStream(target);
         byte[] base64encoded = Base64.getDecoder().decode(image);
         outputStream.write(base64encoded);
@@ -42,7 +52,7 @@ public class FileService {
     public void deleteFile(String oldImageName) {
         if (oldImageName == null) return;
         try {
-            Files.deleteIfExists(Paths.get(appConfiguration.getUploadPath(), oldImageName));
+            Files.deleteIfExists(Paths.get(appConfiguration.getUploadPathForProfilePicture(), oldImageName));
         } catch (IOException e) {
             e.printStackTrace();
         }

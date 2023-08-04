@@ -3,7 +3,7 @@ package com.ozgur.laboratoryreportingapplication.service;
 import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
 import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
-import com.ozgur.laboratoryreportingapplication.shared.UpdateUserRequest;
+import com.ozgur.laboratoryreportingapplication.shared.UserUpdateRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.entity.User;
@@ -77,7 +77,7 @@ public class UserService {
         return mapper.createUserResponseFromAssistant(user);
     }
 
-    public ResponseMessage<UserResponse> updateUser(String username, UpdateUserRequest request) {
+    public ResponseMessage<UserResponse> updateUser(String username, UserUpdateRequest request) {
         User user = userRepository.findByUsername(username).orElseThrow(() ->
                 new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
 
@@ -94,7 +94,7 @@ public class UserService {
         if (request.getImage() != null) {
             String oldImageName = user.getImage();
             try {
-                String imageName = fileService.writeBase64EncodedStringToFile(request.getImage());
+                String imageName = fileService.writeBase64EncodedStringToFileForProfilePicture(request.getImage());
                 user.setImage(imageName);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -110,4 +110,8 @@ public class UserService {
                 .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
 
+    public User getUserPojoWithUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
+    }
 }

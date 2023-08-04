@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class UpdateUserRequest {
+public class UserUpdateRequest {
 
     @NotBlank(message = "{validation.constraints.NotBlank.username.message}")
     @Pattern(regexp = "\\A(?!\\s*\\Z).+", message = "{validation.constraints.Pattern.username.message}")

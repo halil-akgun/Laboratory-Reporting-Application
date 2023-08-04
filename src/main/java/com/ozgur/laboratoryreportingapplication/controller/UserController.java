@@ -2,7 +2,7 @@ package com.ozgur.laboratoryreportingapplication.controller;
 
 import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
-import com.ozgur.laboratoryreportingapplication.shared.UpdateUserRequest;
+import com.ozgur.laboratoryreportingapplication.shared.UserUpdateRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.service.UserService;
@@ -49,7 +49,7 @@ public class UserController {
 
     @PutMapping("/{username}")
     @PreAuthorize("#username == principal.username")
-    ResponseMessage<?> updateUser(@PathVariable String username, @Valid @RequestBody UpdateUserRequest request) {
+    ResponseMessage<?> updateUser(@PathVariable String username, @Valid @RequestBody UserUpdateRequest request) {
         return userService.updateUser(username, request);
     }
     /*  if (#username != principal.username)

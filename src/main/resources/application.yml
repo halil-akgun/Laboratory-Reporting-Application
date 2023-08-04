@@ -37,18 +37,18 @@ spring:
 # Before Spring Boot 2.4, the order in (profiles) 'active' was important,
 # for 2.4 and later the order of the codes below is important. (The last one is valid.)
 
-laboratory:
-  upload-path: uploads/profilepictures/
 ---
 spring:
   profiles: production
 laboratory:
-  upload-path: uploads-production/profilepictures/
+  upload-path-for-profile-picture: uploads-production/profilepictures/
+  upload-path-for-report-picture: uploads-production/reportpictures/
 ---
 spring:
   profiles: dev
 laboratory:
-  upload-path: uploads-dev/profilepictures/
+  upload-path-for-profile-picture: uploads-dev/profilepictures/
+  upload-path-for-report-picture: uploads-dev/reportpictures/
 
 #  %d:       Represents date and time information.
 #  %-5level: Represents the log level. In this case, the log level is displayed five characters wide, aligned to the left.

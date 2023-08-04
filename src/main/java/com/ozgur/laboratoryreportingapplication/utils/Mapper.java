@@ -1,11 +1,11 @@
 package com.ozgur.laboratoryreportingapplication.utils;
 
-import com.ozgur.laboratoryreportingapplication.shared.LoginResponse;
-import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
+import com.ozgur.laboratoryreportingapplication.entity.Report;
+import com.ozgur.laboratoryreportingapplication.shared.*;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import org.springframework.stereotype.Component;
 
-import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
+import java.util.Date;
 
 @Component
 public class Mapper {
@@ -35,6 +35,34 @@ public class Mapper {
                 .surname(assistant.getSurname())
                 .image(assistant.getImage())
                 .hospitalIdNumber(assistant.getHospitalIdNumber())
+                .build();
+    }
+
+    public Report createReportFromReportSaveUpdateRequest(ReportSaveUpdateRequest request) {
+        return Report.builder()
+                .patientName(request.getPatientName())
+                .patientSurname(request.getPatientSurname())
+                .diagnosisTitle(request.getDiagnosisTitle())
+                .diagnosisDetails(request.getDiagnosisDetails())
+                .dateOfReport(request.getDateOfReport())
+                .fileNumber(request.getFileNumber())
+                .patientIdNumber(request.getPatientIdNumber())
+                .timestamp(new Date()).build();
+    }
+
+    public ReportResponse createReportResponseFromReport(Report report) {
+        return ReportResponse.builder()
+                .id(report.getId())
+                .patientName(report.getPatientName())
+                .patientSurname(report.getPatientSurname())
+                .diagnosisTitle(report.getDiagnosisTitle())
+                .diagnosisDetails(report.getDiagnosisDetails())
+                .dateOfReport(report.getDateOfReport())
+                .fileNumber(report.getFileNumber())
+                .patientIdNumber(report.getPatientIdNumber())
+                .imageOfReport(report.getImageOfReport())
+                .timestamp(report.getTimestamp())
+                .laborantNameSurname(report.getUser().getName() + " " + report.getUser().getSurname())
                 .build();
     }
 }
