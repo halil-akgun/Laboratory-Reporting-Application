@@ -39,7 +39,7 @@ public class Report {
     @Column(length = 25, nullable = false)
     private String diagnosisTitle;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 1000, nullable = false)
     private String diagnosisDetails;
 
     @Column(nullable = false)

@@ -33,7 +33,7 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
     public void run(String... args) {
 
         // Fill the RoleType table
-        if (userRoleService.getAllUserRole().size() == 0) {
+        if (userRoleService.getAllUserRole().isEmpty()) {
             userRoleService.save(RoleType.ROLE_ADMIN);
             userRoleService.save(RoleType.ROLE_LABORATORY_ASSISTANT);
         }
@@ -43,8 +43,8 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
             User admin = new User();
             admin.setUsername("admin");
             admin.setPassword("12345678");
-            admin.setName("Admin");
-            admin.setSurname("Admin");
+            admin.setName("Halil");
+            admin.setSurname("Akgun");
             admin.setHospitalIdNumber("0000000");
             userService.saveAdmin(admin);
         }

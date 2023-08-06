@@ -9,6 +9,8 @@ import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.utils.FileService;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -43,5 +45,9 @@ public class ReportService {
                 .message("Report saved successfully")
                 .httpStatus(HttpStatus.CREATED)
                 .object(mapper.createReportResponseFromReport(savedReport)).build();
+    }
+
+    public Page<ReportResponse> getAllReports(Pageable pageable) {
+        return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
     }
 }
