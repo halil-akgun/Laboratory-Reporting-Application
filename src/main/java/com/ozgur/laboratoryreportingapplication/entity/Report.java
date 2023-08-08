@@ -1,17 +1,13 @@
 package com.ozgur.laboratoryreportingapplication.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ozgur.laboratoryreportingapplication.shared.annotation.FileType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -24,7 +20,7 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 15, nullable = false, unique = true)
+    @Column(length = 9, nullable = false, unique = true)
     private String fileNumber;
 
     @Column(length = 25, nullable = false)
@@ -44,13 +40,12 @@ public class Report {
 
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date dateOfReport;
+    private LocalDate dateOfReport;
 
     private String imageOfReport;
 
     @ManyToOne
     private User user;
 
-    private Date timestamp;
+    private LocalDate timestamp;
 }

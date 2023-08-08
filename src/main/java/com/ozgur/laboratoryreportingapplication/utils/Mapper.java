@@ -5,7 +5,7 @@ import com.ozgur.laboratoryreportingapplication.shared.*;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Component
 public class Mapper {
@@ -47,7 +47,7 @@ public class Mapper {
                 .dateOfReport(request.getDateOfReport())
                 .fileNumber(request.getFileNumber())
                 .patientIdNumber(request.getPatientIdNumber())
-                .timestamp(new Date()).build();
+                .timestamp(LocalDate.now()).build();
     }
 
     public ReportResponse createReportResponseFromReport(Report report) {

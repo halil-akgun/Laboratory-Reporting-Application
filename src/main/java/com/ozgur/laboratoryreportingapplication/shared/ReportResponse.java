@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -31,11 +31,11 @@ public class ReportResponse {
     private String diagnosisDetails;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dateOfReport;
+    private LocalDate dateOfReport;
 
     private String imageOfReport;
 
-    private Date timestamp;
+    private LocalDate timestamp;
 
     private String laborantNameSurname;
 

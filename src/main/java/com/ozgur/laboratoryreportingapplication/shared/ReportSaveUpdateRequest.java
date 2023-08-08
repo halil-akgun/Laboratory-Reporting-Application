@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class ReportSaveUpdateRequest {
     @NotBlank
     @UniqueFileNumber
     @Pattern(regexp = "\\d+", message = "{validation.constraints.Pattern.fileNumber.message}")
-    @Size(min = 2, max = 15, message = "{validation.constraints.Size.general.message}")
+    @Size(min = 9, max = 9, message = "{validation.constraints.Size.fileNumber.message}")
     private String fileNumber;
 
     @NotBlank
@@ -45,7 +45,7 @@ public class ReportSaveUpdateRequest {
 
     @NotNull
     @PastOrPresent(message = "{validation.constraints.Date.dateOfReport.message}")
-    private Date dateOfReport;
+    private LocalDate dateOfReport;
 
     @FileType(types = {"jpg", "jpeg", "png"})
     private String imageOfReport;

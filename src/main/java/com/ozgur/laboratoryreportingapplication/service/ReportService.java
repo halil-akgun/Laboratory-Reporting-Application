@@ -47,6 +47,12 @@ public class ReportService {
                 .object(mapper.createReportResponseFromReport(savedReport)).build();
     }
 
+    public void saveDummyReports(ReportSaveUpdateRequest request, User user) {
+        Report report = mapper.createReportFromReportSaveUpdateRequest(request);
+        report.setUser(user);
+        reportRepository.save(report);
+    }
+
     public Page<ReportResponse> getAllReports(Pageable pageable) {
         return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
     }
