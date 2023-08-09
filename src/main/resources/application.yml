@@ -15,10 +15,11 @@ server:
     include-stacktrace: never
 spring:
   datasource:
-    password: db_password
-    url: jdbc:postgresql://localhost:5432/laboratory-reporting-application
-    username: db_user
+    password: d_password
+    url: jdbc:postgresql://localhost:5432/laboratory-reporting-application2
+    username: d_user
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: create
     properties:

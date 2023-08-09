@@ -64,12 +64,18 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
         return (args) -> {
             for (int i = 1; i <= 33; i++) {
                 RegisterRequest user = new RegisterRequest();
-                user.setUsername("user" + i);
                 user.setPassword("12345678");
-                user.setName("Name" + i);
-                user.setSurname("Surname" + i);
-                if (i < 10) user.setHospitalIdNumber("000000" + i);
-                else user.setHospitalIdNumber("00000" + i);
+                if (i < 10) {
+                    user.setUsername("user0" + i);
+                    user.setName("Name0" + i);
+                    user.setSurname("Surname0" + i);
+                    user.setHospitalIdNumber("000000" + i);
+                } else {
+                    user.setUsername("user" + i);
+                    user.setName("Name" + i);
+                    user.setSurname("Surname" + i);
+                    user.setHospitalIdNumber("00000" + i);
+                }
                 userService.saveUser(user);
             }
 

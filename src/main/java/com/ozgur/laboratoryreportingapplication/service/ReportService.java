@@ -10,7 +10,9 @@ import com.ozgur.laboratoryreportingapplication.utils.FileService;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -55,5 +57,15 @@ public class ReportService {
 
     public Page<ReportResponse> getAllReports(Pageable pageable) {
         return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
+    }
+
+    public Page<ReportResponse> getReportsSortedByLaborant(int page, int size, String type) {
+        Pageable pageable;
+        if ("ASC".equalsIgnoreCase(type)) {
+            pageable = PageRequest.of(page, size, Sort.by("user.name", "user.surname").ascending());
+        } else {
+            pageable = PageRequest.of(page, size, Sort.by("user.name", "user.surname").descending());
+        }
+        return reportRepository.getReportsSortedByLaborant(pageable).map(mapper::createReportResponseFromReport);
     }
 }
