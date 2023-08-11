@@ -1,12 +1,14 @@
 package com.ozgur.laboratoryreportingapplication.controller;
 
 import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserUpdateRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
 import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.service.UserService;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.CurrentUser;
+import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,14 +27,19 @@ public class UserController {
 
     Logger logger = LoggerFactory.getLogger(UserController.class);
     private final UserService userService;
+    private final Mapper mapper;
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseMessage<UserResponse> save(@Valid @RequestBody RegisterRequest request) {
 
-        ResponseMessage<UserResponse> response = userService.saveUser(request);
+        User savedUser = userService.saveUser(request);
         logger.info("Assistant saved with username " + request.getUsername());
-        return response;
+
+        return ResponseMessage.<UserResponse>builder()
+                .message("Assistant saved.")
+                .httpStatus(HttpStatus.CREATED)
+                .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
 
     @GetMapping("getAllUsers")

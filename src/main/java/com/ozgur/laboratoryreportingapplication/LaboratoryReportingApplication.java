@@ -1,13 +1,10 @@
 package com.ozgur.laboratoryreportingapplication;
 
 import com.ozgur.laboratoryreportingapplication.entity.User;
-import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
-import com.ozgur.laboratoryreportingapplication.repository.UserRepository;
 import com.ozgur.laboratoryreportingapplication.service.ReportService;
 import com.ozgur.laboratoryreportingapplication.service.UserService;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.ReportSaveUpdateRequest;
-import com.ozgur.laboratoryreportingapplication.utils.Messages;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,7 +25,6 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
 
     private final UserRoleService userRoleService;
     private final UserService userService;
-    private final UserRepository userRepository;
     private final ReportService reportService;
 
     public static void main(String[] args) {
@@ -62,8 +58,12 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
     @Profile("dev")
     CommandLineRunner createDummyUsers() {
         return (args) -> {
+
+            ReportSaveUpdateRequest report = new ReportSaveUpdateRequest();
+            RegisterRequest user = new RegisterRequest();
+            Random random = new Random();
+
             for (int i = 1; i <= 33; i++) {
-                RegisterRequest user = new RegisterRequest();
                 user.setPassword("12345678");
                 if (i < 10) {
                     user.setUsername("user0" + i);
@@ -76,33 +76,30 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
                     user.setSurname("Surname" + i);
                     user.setHospitalIdNumber("00000" + i);
                 }
-                userService.saveUser(user);
-            }
+                User savedUser = userService.saveUser(user);
 
-            User admin = userRepository.findByUsername("admin").orElseThrow(() ->
-                    new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, "admin")));
-            User user = userRepository.findByUserRoleNot(userRoleService.getUserRole(RoleType.ROLE_ADMIN)).get(0);
-            ReportSaveUpdateRequest report = new ReportSaveUpdateRequest();
-            Random random = new Random();
-            for (int i = 1; i <= 30; i++) {
-                report.setDateOfReport(LocalDate.of(2023, 1, i));
-                if (i < 10) {
-                    report.setPatientName(((char) (random.nextInt(26) + 'A')) + ".Name0" + i);
-                    report.setPatientSurname("Surname0" + i);
-                    report.setFileNumber("00000000" + i);
-                    report.setPatientIdNumber(String.valueOf(i).repeat(11));
-                    report.setDiagnosisTitle("DiagnosisTitle0" + i);
-                    report.setDiagnosisDetails("DiagnosisDetails0" + i);
-                    reportService.saveDummyReports(report, admin);
-                } else {
-                    report.setPatientName(((char) (random.nextInt(26) + 'A')) + ".Name" + i);
-                    report.setPatientSurname("Surname" + i);
-                    report.setFileNumber("0000000" + i);
-                    report.setPatientIdNumber(String.valueOf(i).repeat(5) + i / 10);
-                    report.setDiagnosisTitle("DiagnosisTitle" + i);
-                    report.setDiagnosisDetails("DiagnosisDetails" + i);
-                    reportService.saveDummyReports(report, user);
+
+                for (int j = 1; j <= 3; j++) {
+                    report.setDateOfReport(LocalDate.of(2022, random.nextInt(12) + 1, random.nextInt(28) + 1));
+                    String monthValue = String.format("%02d", report.getDateOfReport().getMonthValue());
+                    if (i < 10) {
+                        report.setPatientName(((char) (random.nextInt(26) + 'A')) + ".Name0" + i);
+                        report.setPatientSurname("Surname0" + i);
+                        report.setFileNumber("2022" + monthValue + "0" + i + j);
+                        report.setPatientIdNumber(String.valueOf(i).repeat(11));
+                        report.setDiagnosisTitle("DiagnosisTitle0" + i);
+                        report.setDiagnosisDetails("DiagnosisDetails0" + i);
+                    } else {
+                        report.setPatientName(((char) (random.nextInt(26) + 'A')) + ".Name" + i);
+                        report.setPatientSurname("Surname" + i);
+                        report.setFileNumber("2022" + monthValue + i + j);
+                        report.setPatientIdNumber(String.valueOf(i).repeat(5) + i / 10);
+                        report.setDiagnosisTitle("DiagnosisTitle" + i);
+                        report.setDiagnosisDetails("DiagnosisDetails" + i);
+                    }
+                    reportService.saveDummyReports(report, savedUser);
                 }
+
             }
         };
     }

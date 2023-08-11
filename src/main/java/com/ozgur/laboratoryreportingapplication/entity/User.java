@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "qwe")
+@Table(name = "tbl_user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,6 +40,8 @@ public class User {
     private UserRole userRole;
 
     private String image;
+
+    private String fullName;
 
     @OneToMany(mappedBy = "user")
     private List<Report> reports;

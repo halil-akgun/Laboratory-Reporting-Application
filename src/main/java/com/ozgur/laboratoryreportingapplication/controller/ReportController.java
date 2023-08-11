@@ -7,7 +7,6 @@ import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -34,13 +33,14 @@ public class ReportController {
         return reportService.getAllReports(pageable);
     }
 
-    @GetMapping("getReportsSortedByLaborant")
+    @GetMapping("searchInReports")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
-    Page<ReportResponse> getReportsSortedByLaborant(
-            @RequestParam(name = "page") int page,
-            @RequestParam(name = "size") int size,
-            @RequestParam(name = "type") String type
+    Page<ReportResponse> searchInReports(
+            Pageable pageable,
+            @RequestParam(name = "searchTerm") String searchTerm,
+            @RequestParam(name = "startDate") String startDate,
+            @RequestParam(name = "endDate") String endDate
     ) {
-        return reportService.getReportsSortedByLaborant(page, size, type);
+        return reportService.searchInReports(pageable, searchTerm.trim(), startDate, endDate);
     }
 }

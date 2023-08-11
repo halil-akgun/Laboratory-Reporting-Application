@@ -16,7 +16,8 @@ public class Mapper {
                 .name(user.getName())
                 .surname(user.getSurname())
                 .image(user.getImage())
-                .username(user.getUsername()).build();
+                .username(user.getUsername())
+                .fullName(user.getFullName()).build();
     }
 
     public User createUserFromRegisterRequest(RegisterRequest request) {
@@ -28,13 +29,14 @@ public class Mapper {
                 .build();
     }
 
-    public UserResponse createUserResponseFromAssistant(User assistant) {
+    public UserResponse createUserResponseFromAssistant(User user) {
         return UserResponse.builder()
-                .username(assistant.getUsername())
-                .name(assistant.getName())
-                .surname(assistant.getSurname())
-                .image(assistant.getImage())
-                .hospitalIdNumber(assistant.getHospitalIdNumber())
+                .username(user.getUsername())
+                .name(user.getName())
+                .surname(user.getSurname())
+                .image(user.getImage())
+                .hospitalIdNumber(user.getHospitalIdNumber())
+                .fullName(user.getFullName())
                 .build();
     }
 
@@ -62,7 +64,7 @@ public class Mapper {
                 .patientIdNumber(report.getPatientIdNumber())
                 .imageOfReport(report.getImageOfReport())
                 .timestamp(report.getTimestamp())
-                .laborantNameSurname(report.getUser().getName() + " " + report.getUser().getSurname())
+                .laborantNameSurname(report.getUser().getFullName())
                 .build();
     }
 }

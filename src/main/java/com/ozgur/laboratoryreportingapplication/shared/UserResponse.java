@@ -25,4 +25,6 @@ public class UserResponse {
 
     private String image;
 
+    private String fullName;
+
 }

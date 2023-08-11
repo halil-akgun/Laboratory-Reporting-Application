@@ -9,15 +9,16 @@ import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import com.ozgur.laboratoryreportingapplication.utils.FileService;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @Service
 @RequiredArgsConstructor
@@ -56,16 +57,83 @@ public class ReportService {
     }
 
     public Page<ReportResponse> getAllReports(Pageable pageable) {
-        return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
+
+        if (!pageable.getSort().toString().contains("laborant"))
+            return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
+
+        if (pageable.getSort().toString().contains("ASC"))
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                    Sort.by("user.fullName", "id").ascending());//id: r.id (report.id)
+        else
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                    Sort.by("user.fullName", "id").descending());
+
+//        When you don't give the second parameter (id), the records on the first 2 pages are the same.
+
+        return reportRepository.getReportsSortedByLaborant(pageable).map(mapper::createReportResponseFromReport);
     }
 
-    public Page<ReportResponse> getReportsSortedByLaborant(int page, int size, String type) {
-        Pageable pageable;
-        if ("ASC".equalsIgnoreCase(type)) {
-            pageable = PageRequest.of(page, size, Sort.by("user.name", "user.surname").ascending());
-        } else {
-            pageable = PageRequest.of(page, size, Sort.by("user.name", "user.surname").descending());
+    public Page<ReportResponse> searchInReports(Pageable pageable, String searchTerm, String startDate, String endDate) {
+
+        if (pageable.getSort().toString().contains("laborant")) {
+            if (pageable.getSort().toString().contains("ASC"))
+                pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                        Sort.by("user.name", "id").ascending());
+            else
+                pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                        Sort.by("user.name", "id").descending());
         }
-        return reportRepository.getReportsSortedByLaborant(pageable).map(mapper::createReportResponseFromReport);
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate convertedStartDate = null;
+        LocalDate convertedEndDate = null;
+
+        if (startDate != null && !startDate.isEmpty()) {
+            try {
+                convertedStartDate = LocalDate.parse(startDate, dateFormatter);
+            } catch (DateTimeParseException ignored) {
+            }
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            try {
+                convertedEndDate = LocalDate.parse(endDate, dateFormatter);
+            } catch (DateTimeParseException ignored) {
+            }
+        }
+
+        Specification<Report> spec = Specification.where(null);
+
+        if (convertedStartDate != null && convertedEndDate != null) {
+            LocalDate finalConvertedStartDate = convertedStartDate; // for Lambda
+            LocalDate finalConvertedEndDate = convertedEndDate;
+            spec = spec.and((root, query, builder) ->
+                    builder.between(root.get("dateOfReport"), finalConvertedStartDate, finalConvertedEndDate)
+            );
+        } else if (convertedStartDate == null && convertedEndDate != null) {
+            LocalDate finalConvertedEndDate1 = convertedEndDate;
+            spec = spec.and((root, query, builder) ->
+                    builder.lessThan(root.get("dateOfReport"), finalConvertedEndDate1)
+            );
+        } else if (convertedStartDate != null) {
+            LocalDate finalConvertedStartDate1 = convertedStartDate;
+            spec = spec.and((root, query, builder) ->
+                    builder.greaterThan(root.get("dateOfReport"), finalConvertedStartDate1)
+            );
+        }
+
+        if (searchTerm != null && !searchTerm.isEmpty()) {
+            spec = spec.and((root, query, builder) ->
+                    builder.or(
+                            builder.like(builder.lower(root.get("fileNumber")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("patientName")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("patientSurname")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("patientIdNumber")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("diagnosisTitle")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("diagnosisDetails")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("user").get("fullName")), "%" + searchTerm.toLowerCase() + "%")
+                    )
+            );
+        }
+        return reportRepository.findAll(spec, pageable).map(mapper::createReportResponseFromReport);
     }
 }

@@ -16,7 +16,7 @@ server:
 spring:
   datasource:
     password: d_password
-    url: jdbc:postgresql://localhost:5432/laboratory-reporting-application2
+    url: jdbc:postgresql://localhost:5432/laboratory-reporting-application
     username: d_user
   jpa:
     show-sql: true

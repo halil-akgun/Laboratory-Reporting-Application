@@ -45,7 +45,7 @@ public class UserService {
         return userRepository.existsByUserRole(userRoleService.getUserRole(RoleType.ROLE_ADMIN));
     }
 
-    public ResponseMessage<UserResponse> saveUser(RegisterRequest request) {
+    public User saveUser(RegisterRequest request) {
         userRepository.findByUsername(request.getUsername()).ifPresent(assistant -> {
             throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_USERNAME, request.getUsername()));
         });
@@ -55,15 +55,11 @@ public class UserService {
 
         User user = mapper.createUserFromRegisterRequest(request);
 
+        user.setFullName(user.getName() + " " + user.getSurname());
         user.setUserRole(userRoleService.getUserRole(RoleType.ROLE_LABORATORY_ASSISTANT));
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        User savedUser = userRepository.save(user);
-
-        return ResponseMessage.<UserResponse>builder()
-                .message("Assistant saved.")
-                .httpStatus(HttpStatus.CREATED)
-                .object(mapper.createUserResponseFromAssistant(savedUser)).build();
+        return userRepository.save(user);
     }
 
     public Page<UserResponse> getAllUsers(Pageable pageable, UserDetailsImpl userDetails) {
@@ -101,6 +97,7 @@ public class UserService {
             }
             fileService.deleteFile(oldImageName);
         }
+        user.setFullName(user.getName() + " " + user.getSurname());
 
         User savedUser = userRepository.save(user);
 

@@ -22,4 +22,6 @@ public class LoginResponse {
     private String hospitalIdNumber;
 
     private String image;
+
+    private String fullName;
 }

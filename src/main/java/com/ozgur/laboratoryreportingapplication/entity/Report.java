@@ -44,7 +44,7 @@ public class Report {
 
     private String imageOfReport;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     private LocalDate timestamp;
