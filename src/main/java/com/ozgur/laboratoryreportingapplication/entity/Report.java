@@ -32,7 +32,7 @@ public class Report {
     @Column(length = 11, nullable = false)
     private String patientIdNumber;
 
-    @Column(length = 25, nullable = false)
+    @Column(length = 40, nullable = false)
     private String diagnosisTitle;
 
     @Column(length = 1000, nullable = false)

@@ -1,7 +1,9 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
+import com.ozgur.laboratoryreportingapplication.entity.Report;
 import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
 import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.repository.ReportRepository;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserUpdateRequest;
 import com.ozgur.laboratoryreportingapplication.shared.UserResponse;
@@ -31,6 +33,7 @@ public class UserService {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
     private final FileService fileService;
+    private final ReportRepository reportRepository;
 
 
     public void saveAdmin(User user) {
@@ -95,7 +98,7 @@ public class UserService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            fileService.deleteFile(oldImageName);
+            fileService.deleteProfileImage(oldImageName);
         }
         user.setFullName(user.getName() + " " + user.getSurname());
 
@@ -110,5 +113,26 @@ public class UserService {
     public User getUserPojoWithUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() ->
                 new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
+    }
+
+    public ResponseMessage<?> deleteUser(String username, boolean keepReports) {
+        User user = getUserPojoWithUsername(username);
+
+        if (keepReports) {
+            System.out.println("keepReports");
+            User admin = userRepository.findByUsername("admin").orElseThrow(() ->
+                    new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, "admin")));
+            for (Report report : user.getReports()) {
+                report.setUser(admin);
+                reportRepository.save(report);
+            }
+            user.getReports().clear();
+        } else {
+            fileService.deleteReportImagesOfUser(user);
+        }
+        fileService.deleteProfileImage(user.getImage());
+
+        userRepository.delete(user);
+        return new ResponseMessage<>(null, "User deleted.", HttpStatus.OK);
     }
 }

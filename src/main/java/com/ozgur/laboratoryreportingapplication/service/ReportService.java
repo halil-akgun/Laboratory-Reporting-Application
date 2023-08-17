@@ -1,17 +1,21 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
+import com.ozgur.laboratoryreportingapplication.controller.UserController;
 import com.ozgur.laboratoryreportingapplication.entity.Report;
 import com.ozgur.laboratoryreportingapplication.entity.User;
+import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
 import com.ozgur.laboratoryreportingapplication.repository.ReportRepository;
-import com.ozgur.laboratoryreportingapplication.shared.ReportResponse;
-import com.ozgur.laboratoryreportingapplication.shared.ReportSaveUpdateRequest;
-import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
+import com.ozgur.laboratoryreportingapplication.shared.*;
 import com.ozgur.laboratoryreportingapplication.utils.FileService;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
+import com.ozgur.laboratoryreportingapplication.utils.Messages;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +32,13 @@ public class ReportService {
     private final UserService userService;
     private final Mapper mapper;
     private final FileService fileService;
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    public ResponseMessage<ReportResponse> saveReport(ReportSaveUpdateRequest request) {
+
+    public ResponseMessage<ReportResponse> saveReport(ReportSaveRequest request) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserPojoWithUsername(username);
-        Report report = mapper.createReportFromReportSaveUpdateRequest(request);
+        Report report = mapper.createReportFromReportSaveRequest(request);
         report.setUser(user);
         if (request.getImageOfReport() != null) {
             try {
@@ -50,16 +56,28 @@ public class ReportService {
                 .object(mapper.createReportResponseFromReport(savedReport)).build();
     }
 
-    public void saveDummyReports(ReportSaveUpdateRequest request, User user) {
-        Report report = mapper.createReportFromReportSaveUpdateRequest(request);
+    public void saveDummyReports(ReportSaveRequest request, User user) {
+        Report report = mapper.createReportFromReportSaveRequest(request);
+        report.setImageOfReport(request.getImageOfReport());
         report.setUser(user);
         reportRepository.save(report);
     }
 
-    public Page<ReportResponse> getAllReports(Pageable pageable) {
+    public Page<ReportResponse> getAllReports(Pageable pageable, String myReports) {
 
-        if (!pageable.getSort().toString().contains("laborant"))
+        Specification<Report> spec = Specification.where(null);
+
+        if (!pageable.getSort().toString().contains("laborant")) {
+            if (myReports != null && !myReports.isEmpty()) {
+                spec = spec.and((root, query, builder) ->
+                        builder.equal(root.get("user").get("username"), myReports)
+                );
+                System.out.println(1);
+                return reportRepository.findAll(spec, pageable).map(mapper::createReportResponseFromReport);
+            }
+                System.out.println(2);
             return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
+        }
 
         if (pageable.getSort().toString().contains("ASC"))
             pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
@@ -70,10 +88,17 @@ public class ReportService {
 
 //        When you don't give the second parameter (id), the records on the first 2 pages are the same.
 
+        if (myReports != null && !myReports.isEmpty()) {
+            spec = spec.and((root, query, builder) ->
+                    builder.equal(root.get("user").get("username"), myReports)
+            );
+            return reportRepository.getReportsSortedByLaborantForMyReports(myReports, pageable).map(mapper::createReportResponseFromReport);
+        }
+
         return reportRepository.getReportsSortedByLaborant(pageable).map(mapper::createReportResponseFromReport);
     }
 
-    public Page<ReportResponse> searchInReports(Pageable pageable, String searchTerm, String startDate, String endDate) {
+    public Page<ReportResponse> searchInReports(Pageable pageable, String searchTerm, String startDate, String endDate, String myReports) {
 
         if (pageable.getSort().toString().contains("laborant")) {
             if (pageable.getSort().toString().contains("ASC"))
@@ -121,6 +146,12 @@ public class ReportService {
             );
         }
 
+        if (myReports != null && !myReports.isEmpty()) {
+            spec = spec.and((root, query, builder) ->
+                    builder.equal(root.get("user").get("username"), myReports)
+            );
+        }
+
         if (searchTerm != null && !searchTerm.isEmpty()) {
             spec = spec.and((root, query, builder) ->
                     builder.or(
@@ -135,5 +166,60 @@ public class ReportService {
             );
         }
         return reportRepository.findAll(spec, pageable).map(mapper::createReportResponseFromReport);
+    }
+
+    public void deleteReport(Long id) {
+        Report report = reportRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(Messages.REPORT_NOT_FOUND_WITH_ID, id)));
+
+        if (report.getImageOfReport() != null && !report.getImageOfReport().equals("sampleReport.png"))
+            fileService.deleteReportImage(report.getImageOfReport());
+
+        reportRepository.delete(report);
+
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        logger.warn("The report with id " + id + " has been deleted by laborant " + username);
+    }
+
+    public ReportResponse getReportById(Long id) {
+        Report report = reportRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(Messages.REPORT_NOT_FOUND_WITH_ID, id)));
+        return mapper.createReportResponseFromReport(report);
+    }
+
+    public ResponseEntity<?> updateReport(Long id, boolean removeImage, ReportUpdateRequest request) {
+
+        Report report = reportRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException(String.format(Messages.REPORT_NOT_FOUND_WITH_ID, id)));
+
+        if (request.getImageOfReport() != null) {
+            try {
+                if (report.getImageOfReport() != null && !report.getImageOfReport().equals("sampleReport.png"))
+                    fileService.deleteReportImage(report.getImageOfReport());
+                String imageName = fileService.writeBase64EncodedStringToFileForReportPicture(request.getImageOfReport());
+                report.setImageOfReport(imageName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (removeImage) {
+            if (!report.getImageOfReport().equals("sampleReport.png"))
+                fileService.deleteReportImage(report.getImageOfReport());
+            report.setImageOfReport(null);
+        }
+
+        report.setFileNumber(request.getFileNumberWithId().split("-")[0]);
+        report.setPatientName(request.getPatientName());
+        report.setPatientSurname(request.getPatientSurname());
+        report.setPatientIdNumber(request.getPatientIdNumber());
+        report.setDiagnosisTitle(request.getDiagnosisTitle());
+        report.setDiagnosisDetails(request.getDiagnosisDetails());
+        report.setDateOfReport(request.getDateOfReport());
+
+        Report savedReport = reportRepository.save(report);
+
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        logger.warn("The report with id " + id + " has been updated by laborant " + username);
+
+        return ResponseEntity.ok().body(mapper.createReportResponseFromReport(savedReport));
     }
 }

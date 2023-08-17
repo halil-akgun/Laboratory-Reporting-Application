@@ -1,7 +1,9 @@
 package com.ozgur.laboratoryreportingapplication.shared;
 
+import com.ozgur.laboratoryreportingapplication.shared.annotation.FileNumberPatternForUpdate;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.FileNumberSizeForUpdate;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.FileType;
-import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueFileNumber;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueFileNumberForUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,13 +16,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class ReportSaveUpdateRequest {
+public class ReportUpdateRequest {
 
     @NotBlank
-    @UniqueFileNumber
-    @Pattern(regexp = "\\d+", message = "{validation.constraints.Pattern.fileNumber.message}")
-    @Size(min = 9, max = 9, message = "{validation.constraints.Size.fileNumber.message}")
-    private String fileNumber;
+    @UniqueFileNumberForUpdate
+    @FileNumberPatternForUpdate
+    @FileNumberSizeForUpdate(expectedSize = 9)
+    private String fileNumberWithId;
 
     @NotBlank
     @Size(min = 2, max = 25, message = "{validation.constraints.Size.general.message}")
@@ -36,7 +38,7 @@ public class ReportSaveUpdateRequest {
     private String patientIdNumber;
 
     @NotBlank
-    @Size(min = 2, max = 25, message = "{validation.constraints.Size.general.message}")
+    @Size(min = 2, max = 40, message = "{validation.constraints.Size.general.message}")
     private String diagnosisTitle;
 
     @NotBlank

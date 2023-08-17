@@ -1,10 +1,11 @@
 package com.ozgur.laboratoryreportingapplication;
 
+import com.ozgur.laboratoryreportingapplication.dev_temp.DummyReportsDatabase;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.service.ReportService;
 import com.ozgur.laboratoryreportingapplication.service.UserService;
 import com.ozgur.laboratoryreportingapplication.shared.RegisterRequest;
-import com.ozgur.laboratoryreportingapplication.shared.ReportSaveUpdateRequest;
+import com.ozgur.laboratoryreportingapplication.shared.ReportSaveRequest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -50,6 +51,7 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
             admin.setName("Halil");
             admin.setSurname("Akgun");
             admin.setHospitalIdNumber("0000000");
+            admin.setFullName(admin.getName() + " " + admin.getSurname());
             userService.saveAdmin(admin);
         }
     }
@@ -59,47 +61,43 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
     CommandLineRunner createDummyUsers() {
         return (args) -> {
 
-            ReportSaveUpdateRequest report = new ReportSaveUpdateRequest();
+            ReportSaveRequest report = new ReportSaveRequest();
             RegisterRequest user = new RegisterRequest();
+            DummyReportsDatabase db = new DummyReportsDatabase();
             Random random = new Random();
 
             for (int i = 1; i <= 33; i++) {
                 user.setPassword("12345678");
+                int indexForName = random.nextInt(2);
+                user.setName(db.getPatientName(indexForName, random.nextInt(8)));
+                user.setSurname(db.getPatientSurname(indexForName, random.nextInt(8)));
+                user.setUsername(user.getName() + i);
                 if (i < 10) {
-                    user.setUsername("user0" + i);
-                    user.setName("Name0" + i);
-                    user.setSurname("Surname0" + i);
                     user.setHospitalIdNumber("000000" + i);
                 } else {
-                    user.setUsername("user" + i);
-                    user.setName("Name" + i);
-                    user.setSurname("Surname" + i);
                     user.setHospitalIdNumber("00000" + i);
                 }
                 User savedUser = userService.saveUser(user);
 
-
                 for (int j = 1; j <= 3; j++) {
                     report.setDateOfReport(LocalDate.of(2022, random.nextInt(12) + 1, random.nextInt(28) + 1));
                     String monthValue = String.format("%02d", report.getDateOfReport().getMonthValue());
+                    int indexForName2 = random.nextInt(2);
+                    report.setPatientName(db.getPatientName(indexForName2, random.nextInt(8)));
+                    report.setPatientSurname(db.getPatientSurname(indexForName2, random.nextInt(8)));
+                    int indexForDiagnosis = random.nextInt(10);
+                    report.setDiagnosisTitle(db.getDiagnosisTitle(indexForDiagnosis));
+                    report.setDiagnosisDetails(db.getDiagnosisDetails(indexForDiagnosis));
+                    report.setImageOfReport("sampleReport.png");
                     if (i < 10) {
-                        report.setPatientName(((char) (random.nextInt(26) + 'A')) + ".Name0" + i);
-                        report.setPatientSurname("Surname0" + i);
                         report.setFileNumber("2022" + monthValue + "0" + i + j);
                         report.setPatientIdNumber(String.valueOf(i).repeat(11));
-                        report.setDiagnosisTitle("DiagnosisTitle0" + i);
-                        report.setDiagnosisDetails("DiagnosisDetails0" + i);
                     } else {
-                        report.setPatientName(((char) (random.nextInt(26) + 'A')) + ".Name" + i);
-                        report.setPatientSurname("Surname" + i);
                         report.setFileNumber("2022" + monthValue + i + j);
                         report.setPatientIdNumber(String.valueOf(i).repeat(5) + i / 10);
-                        report.setDiagnosisTitle("DiagnosisTitle" + i);
-                        report.setDiagnosisDetails("DiagnosisDetails" + i);
                     }
                     reportService.saveDummyReports(report, savedUser);
                 }
-
             }
         };
     }

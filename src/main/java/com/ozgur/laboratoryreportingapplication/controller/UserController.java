@@ -42,6 +42,12 @@ public class UserController {
                 .object(mapper.createUserResponseFromAssistant(savedUser)).build();
     }
 
+    @DeleteMapping("/delete/{username}")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+    ResponseMessage<?> deleteUser(@PathVariable String username, @RequestParam boolean keepReports) {
+        return userService.deleteUser(username, keepReports);
+    }
+
     @GetMapping("getAllUsers")
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
     Page<UserResponse> getAllUsers(Pageable pageable, @CurrentUser UserDetailsImpl userDetails) {

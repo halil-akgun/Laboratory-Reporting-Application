@@ -19,8 +19,11 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/**")
+        registry.addResourceHandler("/images/profile/**")
                 .addResourceLocations("file:./" + appConfiguration.getUploadPathForProfilePicture())
+                .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
+        registry.addResourceHandler("/images/report/**")
+                .addResourceLocations("file:./" + appConfiguration.getUploadPathForReportPicture())
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
     }
 
@@ -28,7 +31,9 @@ public class WebConfiguration implements WebMvcConfigurer {
     CommandLineRunner createStorageDirectories() {
         return (args) -> {
             File folder = new File(appConfiguration.getUploadPathForProfilePicture());
+            File folder2 = new File(appConfiguration.getUploadPathForReportPicture());
             if (!folder.exists()) folder.mkdirs();
+            if (!folder2.exists()) folder2.mkdirs();
         };
     }
 }

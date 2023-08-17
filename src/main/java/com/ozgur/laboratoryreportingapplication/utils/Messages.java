@@ -11,4 +11,8 @@ public class Messages {
     public static final String USER_NOT_FOUND_WITH_USERNAME =
             "Error: User not found with username: %s";
 
+
+    public static final String REPORT_NOT_FOUND_WITH_ID =
+            "Error: Report not found with id: %d";
+
 }

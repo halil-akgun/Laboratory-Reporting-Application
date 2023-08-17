@@ -39,4 +39,6 @@ public class ReportResponse {
 
     private String laborantNameSurname;
 
+    private String laborantUsername;
+
 }

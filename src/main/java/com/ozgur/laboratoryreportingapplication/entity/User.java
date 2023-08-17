@@ -41,8 +41,8 @@ public class User {
 
     private String image;
 
-    private String fullName;
+    private String fullName; // for searchInReports
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Report> reports;
 }
