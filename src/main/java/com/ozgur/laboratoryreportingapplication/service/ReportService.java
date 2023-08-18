@@ -75,7 +75,7 @@ public class ReportService {
                 System.out.println(1);
                 return reportRepository.findAll(spec, pageable).map(mapper::createReportResponseFromReport);
             }
-                System.out.println(2);
+            System.out.println(2);
             return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
         }
 
@@ -89,9 +89,6 @@ public class ReportService {
 //        When you don't give the second parameter (id), the records on the first 2 pages are the same.
 
         if (myReports != null && !myReports.isEmpty()) {
-            spec = spec.and((root, query, builder) ->
-                    builder.equal(root.get("user").get("username"), myReports)
-            );
             return reportRepository.getReportsSortedByLaborantForMyReports(myReports, pageable).map(mapper::createReportResponseFromReport);
         }
 

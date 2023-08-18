@@ -1,25 +1,28 @@
-package com.ozgur.laboratoryreportingapplication.controller;
+package com.ozgur.laboratoryreportingapplication.auth;
 
 import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.controller.UserController;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.CurrentUser;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class AuthController {
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private AuthService authService;
+
 
     @PostMapping("/auth")
-    ResponseEntity<?> authenticateUser(@CurrentUser UserDetailsImpl userDetails) {
+    AuthResponse authenticateUser(@RequestBody Credentials credentials) {
 
-        logger.info("User logged in with username " + userDetails.getUsername());
-
-        return ResponseEntity.ok(Mapper.loginResponseFromUser(userDetails.getUser()));
+        return authService.authenticate(credentials);
     }
 
 }

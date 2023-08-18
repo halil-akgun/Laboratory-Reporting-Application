@@ -2,6 +2,7 @@ package com.ozgur.laboratoryreportingapplication.entity;
 
 import javax.persistence.*;
 
+import com.ozgur.laboratoryreportingapplication.auth.Token;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -45,4 +46,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Report> reports;
+
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
 }

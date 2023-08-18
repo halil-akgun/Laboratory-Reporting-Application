@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -50,6 +51,11 @@ public class WebSecurityConfig {
         return new CustomAccessDeniedHandler();
     }
 
+    @Bean
+    TokenFilter tokenFilter() {
+        return new TokenFilter();
+    }
+
     @Bean // in the old version we did this by @Override the configure method
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 // cors(): browser-based security - when a request is received from a different
@@ -60,9 +66,10 @@ public class WebSecurityConfig {
                 .authorizeRequests().antMatchers(AUTH_WHITE_LIST).permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic().authenticationEntryPoint(new AuthEntryPoint())
+                .exceptionHandling().authenticationEntryPoint(new AuthEntryPoint())
                 .and()
-                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler());
+                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
+                .and().addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
 
 //        http.authenticationProvider(authenticationProvider()); // Provider introduction

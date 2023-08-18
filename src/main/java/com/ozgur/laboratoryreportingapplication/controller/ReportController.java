@@ -48,7 +48,7 @@ public class ReportController {
     }
 
     @DeleteMapping("/delete/{id:[0-9]+}")
-    @PreAuthorize("@reportSecurityService.isAllowedToDelete(#id, principal)")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseMessage<?> deleteReport(@PathVariable Long id) {
         reportService.deleteReport(id);
         return new ResponseMessage<>(null, "Report deleted.", HttpStatus.OK);
