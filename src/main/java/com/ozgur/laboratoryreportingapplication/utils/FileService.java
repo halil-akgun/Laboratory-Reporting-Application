@@ -4,7 +4,6 @@ import com.ozgur.laboratoryreportingapplication.configuration.AppConfiguration;
 import com.ozgur.laboratoryreportingapplication.entity.Report;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import org.apache.tika.Tika;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

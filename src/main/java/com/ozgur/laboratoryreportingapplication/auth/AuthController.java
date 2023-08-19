@@ -1,28 +1,33 @@
 package com.ozgur.laboratoryreportingapplication.auth;
 
-import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
-import com.ozgur.laboratoryreportingapplication.controller.UserController;
-import com.ozgur.laboratoryreportingapplication.shared.annotation.CurrentUser;
-import com.ozgur.laboratoryreportingapplication.utils.Mapper;
+import com.ozgur.laboratoryreportingapplication.shared.ResponseMessage;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
 
-    private AuthService authService;
+    private final AuthService authService;
 
 
     @PostMapping("/auth")
-    AuthResponse authenticateUser(@RequestBody Credentials credentials) {
+    AuthResponse handleAuthentication(@RequestBody Credentials credentials) {
 
         return authService.authenticate(credentials);
     }
 
+    @PostMapping("/logout2")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    ResponseMessage<?> handleLogout(@RequestHeader(name = "Authorization") String authorization) {
+
+        String token = authorization.substring(7);
+        authService.clearToken(token);
+
+        return new ResponseMessage<>().toBuilder().message("Logout success").build();
+    }
 }

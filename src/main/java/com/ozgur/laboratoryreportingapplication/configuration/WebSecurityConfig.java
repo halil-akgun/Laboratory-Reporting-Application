@@ -1,12 +1,8 @@
 package com.ozgur.laboratoryreportingapplication.configuration;
 
-import com.ozgur.laboratoryreportingapplication.error.CustomAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,7 +10,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
@@ -23,32 +18,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    private final UserDetailsServiceImpl userDetailsService;
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-
-        return authProvider;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
-
-    @Bean
-    public AccessDeniedHandler accessDeniedHandler() {
-        return new CustomAccessDeniedHandler();
     }
 
     @Bean
@@ -68,11 +41,8 @@ public class WebSecurityConfig {
                 .and()
                 .exceptionHandling().authenticationEntryPoint(new AuthEntryPoint())
                 .and()
-                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
-                .and().addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
-
-//        http.authenticationProvider(authenticationProvider()); // Provider introduction
 
         return http.build();
     }
@@ -83,11 +53,7 @@ public class WebSecurityConfig {
             "/static/**",
             "/*.js",
             "/*.json",
-            "/swagger-ui/**",
-            "/swagger*/**", // aslinda yukaridakini de kapsiyor - swagger* : * ile devami ne olursa kapsar
-            "/v3/api-docs/**",
             "/users/save",
-            "/images/**",
-            "/users/getUsers"
+            "/auth"
     };
 }

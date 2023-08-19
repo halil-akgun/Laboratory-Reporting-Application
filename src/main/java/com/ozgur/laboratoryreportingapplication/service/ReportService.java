@@ -72,10 +72,8 @@ public class ReportService {
                 spec = spec.and((root, query, builder) ->
                         builder.equal(root.get("user").get("username"), myReports)
                 );
-                System.out.println(1);
                 return reportRepository.findAll(spec, pageable).map(mapper::createReportResponseFromReport);
             }
-            System.out.println(2);
             return reportRepository.findAll(pageable).map(mapper::createReportResponseFromReport);
         }
 

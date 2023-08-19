@@ -119,7 +119,6 @@ public class UserService {
         User user = getUserPojoWithUsername(username);
 
         if (keepReports) {
-            System.out.println("keepReports");
             User admin = userRepository.findByUsername("admin").orElseThrow(() ->
                     new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, "admin")));
             for (Report report : user.getReports()) {
