@@ -1,0 +1,48 @@
+name: laboratory-deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Update submodules
+      run: git submodule update --init --recursive
+    
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12.x
+        cache: 'npm'
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3.12.0
+      with:
+        java-version: 17
+    - run: npm ci
+      working-directory: ./laboratory-reporting-frontend
+    - run: npm run build --if-present
+      working-directory: ./laboratory-reporting-frontend
+
+    - name: copy react to spring resources
+      run: |
+        mkdir -p src/main/resources/static
+        cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
+    - name: build spring
+      run: mwn -B package --file pom.xml
+      working-directory: ./
+      
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+        username: ${{secrets.USERNAME}}
+        server: ${{secrets.IP}}
+        ssh_private_key: ${{secrets.SSH}}
+        local_path: /target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
+        remote_path: /home/halilakgun0
