@@ -2,7 +2,7 @@ name: laboratory-deploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 
 jobs:
