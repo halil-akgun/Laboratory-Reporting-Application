@@ -51,6 +51,7 @@ public class WebSecurityConfig {
             "/",
             "/index*",
             "/images/**",
+            "/laboratory-icon.ico",
             "/static/**",
             "/*.js",
             "/*.json",
