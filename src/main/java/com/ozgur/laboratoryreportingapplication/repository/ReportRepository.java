@@ -19,6 +19,4 @@ public interface ReportRepository extends JpaRepository<Report, Long>, JpaSpecif
     @Query(value = "SELECT r FROM Report r LEFT JOIN r.user u")
     Page<Report> getReportsSortedByLaborant(Pageable pageable);
 
-
-    boolean existsByFileNumber(String fileNumber);
 }

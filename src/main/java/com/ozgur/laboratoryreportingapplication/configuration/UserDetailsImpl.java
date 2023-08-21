@@ -1,12 +1,14 @@
 package com.ozgur.laboratoryreportingapplication.configuration;
 
 import com.ozgur.laboratoryreportingapplication.entity.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+@Getter
 public class UserDetailsImpl implements UserDetails {
 
     User user;
@@ -14,10 +16,6 @@ public class UserDetailsImpl implements UserDetails {
     public UserDetailsImpl(User user) {
         super();
         this.user = user;
-    }
-
-    public User getUser() {
-        return user;
     }
 
     @Override

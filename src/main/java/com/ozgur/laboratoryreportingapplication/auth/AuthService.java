@@ -80,11 +80,13 @@ public class AuthService {
         tokenRepository.deleteById(token);
     }
 
-    @Scheduled(fixedRate = 60 * 1000)
-    public void cleanupExpiredTokens() {
-        LocalDateTime threeHoursAgo = LocalDateTime.now().minusHours(3);
 
-        List<Token> expiredTokens = tokenRepository.findByLastActionTimeBefore(threeHoursAgo);
+
+    @Scheduled(fixedRate = 10 * 60 * 1000)
+    public void cleanupExpiredTokens() {
+        LocalDateTime eightHoursAgo = LocalDateTime.now().minusHours(8);
+
+        List<Token> expiredTokens = tokenRepository.findByLastActionTimeBefore(eightHoursAgo);
 
         tokenRepository.deleteAll(expiredTokens);
 

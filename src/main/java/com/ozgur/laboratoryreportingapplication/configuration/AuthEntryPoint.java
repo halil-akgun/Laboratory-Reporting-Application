@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,11 +19,11 @@ public class AuthEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
-                         AuthenticationException authException) throws IOException, ServletException {
-        // error log'a kaydediliyor
+                         AuthenticationException authException) throws IOException {
+
         logger.error("Unauthorized error: {}", authException.getMessage());
 
-        // response icerigi JSON olacak ve HTTP status 401 Unauthorized olarak setliyoruz
+        // The response content will be JSON, and we set HTTP status 401 Unauthorized
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
@@ -36,7 +35,7 @@ public class AuthEntryPoint implements AuthenticationEntryPoint {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(response.getOutputStream(), body);
-//           AuthenticationException (401) firladiginda response'a bu body ekleniyor
-//           response.getOutputStream(): 2. parametredeki(body) veriyi JSON dosyasina ekle/yaz
+//           This body is added to the response when AuthenticationException (401) is thrown
+//           response.getOutputStream(): Append/write data from 2nd parameter(body) to JSON file
     }
 }

@@ -197,7 +197,7 @@ public class ReportService {
                 e.printStackTrace();
             }
         } else if (removeImage) {
-            if (!report.getImageOfReport().equals("sampleReport.png"))
+            if (report.getImageOfReport() != null && !report.getImageOfReport().equals("sampleReport.png"))
                 fileService.deleteReportImage(report.getImageOfReport());
             report.setImageOfReport(null);
         }

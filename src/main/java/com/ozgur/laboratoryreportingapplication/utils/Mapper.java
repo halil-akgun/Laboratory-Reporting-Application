@@ -52,19 +52,6 @@ public class Mapper {
                 .timestamp(LocalDate.now()).build();
     }
 
-    public Report createReportFromReportUpdateRequest(ReportUpdateRequest request) {
-        return Report.builder()
-                .patientName(request.getPatientName())
-                .patientSurname(request.getPatientSurname())
-                .diagnosisTitle(request.getDiagnosisTitle())
-                .diagnosisDetails(request.getDiagnosisDetails())
-                .dateOfReport(request.getDateOfReport())
-                .fileNumber(request.getFileNumberWithId().split("-")[0])
-                .patientIdNumber(request.getPatientIdNumber())
-                .timestamp(LocalDate.now()).build();
-    }
-
-
     public ReportResponse createReportResponseFromReport(Report report) {
         return ReportResponse.builder()
                 .id(report.getId())

@@ -17,13 +17,15 @@ import com.ozgur.laboratoryreportingapplication.service.UserRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.time.LocalDate;
 import java.util.Random;
 
 @SpringBootApplication
 @RequiredArgsConstructor
-public class LaboratoryReportingApplication implements CommandLineRunner {
+@EnableScheduling
+public class LaboratoryReportingApplication implements CommandLineRunner/*, AsyncConfigurer*/ {
 
     private final UserRoleService userRoleService;
     private final UserService userService;
@@ -34,7 +36,8 @@ public class LaboratoryReportingApplication implements CommandLineRunner {
         SpringApplication.run(LaboratoryReportingApplication.class, args);
     }
 
-    //  CommandLineRunner is implemented and the run method is overridden.
+
+//  CommandLineRunner is implemented and the run method is overridden.
 //	In this way, when the application starts working, the following methods will be run first.
     @Override
     public void run(String... args) {
