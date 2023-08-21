@@ -35,6 +35,8 @@ public class WebSecurityConfig {
 // location (domain,protocol,port), the browser automatically blocks if they do not match
 // the domains of the server. but nowadays generally the backend and frontend are on different servers.
         http.cors().and().csrf().disable()
+                .headers().frameOptions().disable() // Disabled iframe protection for H2 console
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers(AUTH_WHITE_LIST).permitAll()
                 .anyRequest().authenticated()
@@ -53,6 +55,7 @@ public class WebSecurityConfig {
             "/images/**",
             "/laboratory-icon.ico",
             "/static/**",
+            "/h2-console/**",
             "/*.js",
             "/*.json",
             "/users/save",
