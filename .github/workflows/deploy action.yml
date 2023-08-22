@@ -39,7 +39,7 @@ jobs:
         cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
         
     - name: Build Spring
-      run: mwnw -B package --file pom.xml
+      run: ./mwnw -B package --file pom.xml
       working-directory: ./
       
     - name: SFTP Deploy
