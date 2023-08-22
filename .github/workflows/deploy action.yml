@@ -28,15 +28,30 @@ jobs:
         
     - run: npm ci
       working-directory: ./laboratory-reporting-frontend
-    - run: npm run build --if-present
+
+    - name: Build React App
+      run: CI=false npm run build --if-present
       working-directory: ./laboratory-reporting-frontend
 
-    - name: copy react to spring resources
-      run: |
-        mkdir -p src/main/resources/static
-        cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
-    - name: build spring
-      run: mwn -B package --file pom.xml
+    - name: Create Spring Resources Directory
+      run: mkdir -p src/main/resources/static
+      working-directory: ./
+      
+    - name: Copy React Build to Spring Resources
+      run: cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
+      working-directory: ./
+
+    - name: Make mvnw Executable
+      run: chmod +x mvnw
+      working-directory: ./
+
+    - name: Build with Maven Wrapper
+      run: ./mvnw clean install
+      working-directory: ./
+        
+    - name: Build Spring
+      #run: ./mvnw -B package --file pom.xml
+      run: ./mvnw --batch-mode --update-snapshots package
       working-directory: ./
       
     - name: SFTP Deploy
