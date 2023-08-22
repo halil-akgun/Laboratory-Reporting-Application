@@ -37,9 +37,13 @@ jobs:
       run: |
         mkdir -p src/main/resources/static
         cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
+
+    - name: Make mvnw Executable
+      run: chmod +x mvnw
+      working-directory: ./
         
     - name: Build Spring
-      run: chmod +x mvnw -B package --file pom.xml
+      run: mvnw -B package --file pom.xml
       working-directory: ./
       
     - name: SFTP Deploy
