@@ -50,7 +50,8 @@ jobs:
       working-directory: ./
         
     - name: Build Spring
-      run: ./mvnw -B package --file pom.xml
+      #run: ./mvnw -B package --file pom.xml
+      run: ./mvnw --batch-mode --update-snapshots package
       working-directory: ./
       
     - name: SFTP Deploy
