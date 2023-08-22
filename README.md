@@ -1,15 +1,62 @@
+# Laboratuvar Raporlama Uygulaması Kurulum ve Çalıştırma Kılavuzu
 
-# LABORATORY REPORTING APPLICATION
+Bu belge, Spring Boot ve React kullanarak geliştirdiğiniz laboratuvar raporlama uygulamanızı kurma ve çalıştırma
+adımlarını içerir. İşte adım adım kılavuz:
 
-## TASKS
-- A simple laboratory reporting application will be developed using Spring, JPA, Maven, React technologies.
-- Report Description (File number, Patient Name and Surname, Patient Identification Number (TC), Diagnosis Title, Diagnosis Details, Date of Report, One Photo in .png/.jpg Format of the Physical Report)
-- A report must be defined by only one laboratory assistant. A laboratory assistant can define n reports. (Username, Name, Surname, Hospital Identification Number(7 Digit))
-- It should be possible to search by patient name/surname, patient identification number, laboratory assistant name/surname information. It should be possible to sort by report date.
-- It should be possible to make changes on an existing report.
-- Details of all existing reports should be able to be examined.
-- An existing report should be able to be deleted.
-- Create unit tests for methods.
-- Shouldn't need to use an IDE to make the app executable.
-- Users must log in to the system with their username/password.
-- It should include an authorization mechanism. For example, standard users can create and associate records, but not delete them. Let the administrator perform all actions.
+## Gereksinimler
+
+- Java Development Kit (JDK) 11 veya daha yeni sürüm
+- Node.js ve npm (Node Package Manager)
+- Git (isteğe bağlı)
+
+## Adım 1: Projeyi İndirme
+
+GitHub reposunu klonlayarak projeyi bilgisayarınıza indirebilirsiniz. Git kullanmıyorsanız, projenin GitHub
+sayfasından "Download ZIP" seçeneğiyle indirebilirsiniz.
+
+```bash
+git clone https://github.com/sizin-proje-repo-linki.git
+cd proje-klasoru
+```
+
+## Adım 2: Sunucu (Spring Boot) Kısmının Kurulumu ve Çalıştırılması
+
+1. `server` klasörüne gidin:
+
+   ```bash
+   cd server
+   ```
+2. Spring Boot uygulamanızı başlatın:
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+
+## Adım 3: İstemci (React) Kısmının Kurulumu ve Çalıştırılması
+
+1. `client` klasörüne gidin:
+   ```bash
+   cd ../client
+   ```
+2. Bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
+   ```bash
+   npm install
+   ```
+3. React uygulamanızı başlatın:
+   ```bash
+   npm start
+   ```
+
+Bu komut, React uygulamanızı başlatır ve varsayılan olarak tarayıcınızda `http://localhost:3000` adresinde görüntüler.
+
+## Uygulamayı Kullanma
+
+Artık uygulamanızı başarıyla başlattınız. Tarayıcınızda `http://localhost:3000` adresine giderek uygulamanıza erişebilir
+ve kullanmaya başlayabilirsiniz.
+
+## Sonuç
+
+Bu kılavuz, Spring Boot ve React ile geliştirdiğiniz laboratuvar raporlama uygulamanızı kurma ve çalıştırma adımlarını
+içerir. Projeyi başarıyla çalıştırdıktan sonra, uygulamanızı geliştirmeye devam edebilirsiniz.
+
+Not: Proje bağımlılıkları ve sistem gereksinimleri değişebilir, bu yüzden en son dokümantasyona ve projenizin
+gereksinimlerine göre ayarlamalar yapmayı unutmayın.
