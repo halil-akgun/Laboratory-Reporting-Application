@@ -33,17 +33,20 @@ jobs:
       run: CI=false npm run build --if-present
       working-directory: ./laboratory-reporting-frontend
 
-    - name: copy react to spring resources
-      run: |
-        mkdir -p src/main/resources/static
-        cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
+    - name: Create Spring Resources Directory
+      run: mkdir -p src/main/resources/static
+      working-directory: ./
+      
+    - name: Copy React Build to Spring Resources
+      run: cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
+      working-directory: ./
 
     - name: Make mvnw Executable
-      run: chmod +x mvnw
+      run: chmod +x mvn
       working-directory: ./
         
     - name: Build Spring
-      run: mvnw -B package --file pom.xml
+      run: mvn -B package --file pom.xml
       working-directory: ./
       
     - name: SFTP Deploy
