@@ -41,12 +41,12 @@ jobs:
       run: cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
       working-directory: ./
 
-    - name: Make mvnw Executable
-      run: chmod +x mvn
+    - name: Build with Maven Wrapper
+      run: ./mvnw clean install
       working-directory: ./
         
     - name: Build Spring
-      run: mvn -B package --file pom.xml
+      run: ./mvnw -B package --file pom.xml
       working-directory: ./
       
     - name: SFTP Deploy
