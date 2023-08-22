@@ -37,8 +37,9 @@ jobs:
       run: |
         mkdir -p src/main/resources/static
         cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
-    - name: build spring
-      run: mwn -B package --file pom.xml
+        
+    - name: Build Spring
+      run: .\mwn -B package --file pom.xml
       working-directory: ./
       
     - name: SFTP Deploy
