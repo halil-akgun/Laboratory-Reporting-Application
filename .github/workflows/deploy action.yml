@@ -41,6 +41,10 @@ jobs:
       run: cp -a laboratory-reporting-frontend/build/. src/main/resources/static/
       working-directory: ./
 
+    - name: Make mvnw Executable
+      run: chmod +x mvnw
+      working-directory: ./
+
     - name: Build with Maven Wrapper
       run: ./mvnw clean install
       working-directory: ./
