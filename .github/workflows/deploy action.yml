@@ -60,5 +60,5 @@ jobs:
         username: ${{secrets.USERNAME}}
         server: ${{secrets.IP}}
         ssh_private_key: ${{secrets.SSH}}
-        local_path: /target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
+        local_path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
         remote_path: /home/halilakgun0
