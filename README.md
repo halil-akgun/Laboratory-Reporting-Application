@@ -1,11 +1,11 @@
 # Laboratuvar Raporlama Uygulaması Kurulum ve Çalıştırma Kılavuzu
 
-Bu belge, Spring Boot ve React kullanarak geliştirdiğiniz laboratuvar raporlama uygulamanızı kurma ve çalıştırma
+Bu belge, Spring Boot ve React kullanarak geliştirilen laboratuvar raporlama uygulamasını kurma ve çalıştırma
 adımlarını içerir. İşte adım adım kılavuz:
 
 ## Gereksinimler
 
-- Java Development Kit (JDK) 11 veya daha yeni sürüm
+- Java Development Kit (JDK) 17 veya daha yeni sürüm
 - Node.js ve npm (Node Package Manager)
 - Git (isteğe bağlı)
 
@@ -15,48 +15,47 @@ GitHub reposunu klonlayarak projeyi bilgisayarınıza indirebilirsiniz. Git kull
 sayfasından "Download ZIP" seçeneğiyle indirebilirsiniz.
 
 ```bash
-git clone https://github.com/sizin-proje-repo-linki.git
-cd proje-klasoru
+git clone https://github.com/halil-akgun/laboratory-reporting-application.git
 ```
 
 ## Adım 2: Sunucu (Spring Boot) Kısmının Kurulumu ve Çalıştırılması
 
-1. `server` klasörüne gidin:
+1. `laboratory-reporting-application` klasörüne gidin:
 
    ```bash
-   cd server
+   cd laboratory-reporting-application
    ```
-2. Spring Boot uygulamanızı başlatın:
+2. Spring Boot uygulamasını başlatın:
    ```bash
    ./mvnw spring-boot:run
    ```
 
 ## Adım 3: İstemci (React) Kısmının Kurulumu ve Çalıştırılması
 
-1. `client` klasörüne gidin:
+1. `laboratory-reporting-frontend` klasörüne gidin:
    ```bash
-   cd ../client
+   cd laboratory-reporting-frontend
    ```
 2. Bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
    ```bash
    npm install
    ```
-3. React uygulamanızı başlatın:
+3. React uygulamasını başlatın:
    ```bash
    npm start
    ```
 
-Bu komut, React uygulamanızı başlatır ve varsayılan olarak tarayıcınızda `http://localhost:3000` adresinde görüntüler.
+Bu komut, React uygulamasını başlatır ve varsayılan olarak tarayıcınızda `http://localhost:3000` adresinde görüntüler.
 
 ## Uygulamayı Kullanma
 
-Artık uygulamanızı başarıyla başlattınız. Tarayıcınızda `http://localhost:3000` adresine giderek uygulamanıza erişebilir
+Artık uygulamayı başarıyla başlattınız. Tarayıcınızda `http://localhost:3000` adresine giderek uygulamaya erişebilir
 ve kullanmaya başlayabilirsiniz.
 
 ## Sonuç
 
-Bu kılavuz, Spring Boot ve React ile geliştirdiğiniz laboratuvar raporlama uygulamanızı kurma ve çalıştırma adımlarını
-içerir. Projeyi başarıyla çalıştırdıktan sonra, uygulamanızı geliştirmeye devam edebilirsiniz.
+Bu kılavuz, Spring Boot ve React ile geliştirilen laboratuvar raporlama uygulamasını kurma ve çalıştırma adımlarını
+içerir. Projeyi başarıyla çalıştırdıktan sonra, uygulamayı geliştirmeye devam edebilirsiniz.
 
-Not: Proje bağımlılıkları ve sistem gereksinimleri değişebilir, bu yüzden en son dokümantasyona ve projenizin
+Not: Proje bağımlılıkları ve sistem gereksinimleri değişebilir, bu yüzden en son dokümantasyona ve projenin
 gereksinimlerine göre ayarlamalar yapmayı unutmayın.
