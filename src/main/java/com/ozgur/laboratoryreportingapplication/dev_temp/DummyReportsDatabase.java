@@ -3,7 +3,7 @@ package com.ozgur.laboratoryreportingapplication.dev_temp;
 public class DummyReportsDatabase {
 
     String[][] patientNames = {{"John", "Robert", "Marry", "Alan", "Warren", "Sophia", "Emma", "Darian"},
-            {"Ahmet", "Mehmet", "Ayşe", "Fatma", "Ali", "Mustafa", "Cem", "Ece"}};
+            {"Ahmet", "Mehmet", "Ayşe", "Fatma", "Ali", "Mustafa", "Cemil", "Ece"}};
     String[][] patientSurnames = {{"Avery", "Abel", "Erik", "Jacob", "Pedro", "Tristan", "Luis", "Cole"},
             {"Yılmaz", "Demir", "Kaya", "Çelik", "Şahin", "Koç", "Güneş", "Yıldız"}};
 
