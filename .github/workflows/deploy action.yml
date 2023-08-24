@@ -65,7 +65,7 @@ jobs:
 
     - name: Restart the Application on the Server
       run: |
-        ssh -i ${{ secrets.SSH2 }} ${{ secrets.USERNAME }}@${{ secrets.IP }} 'pkill -u halilakgun0 "java"' && \
-        ssh -i ${{ secrets.SSH2 }} ${{ secrets.USERNAME }}@${{ secrets.IP }} 'sleep 15' && \
-        ssh -i ${{ secrets.SSH2 }} ${{ secrets.USERNAME }}@${{ secrets.IP }} 'nohup java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &'
+        ssh -i ${{secrets.SSH2}} ${{secrets.USERNAME}}@${{secrets.IP}} 'pkill -u halilakgun0 "java"' && \
+        ssh -i ${{secrets.SSH2}} ${{secrets.USERNAME}}@${{secrets.IP}} 'sleep 15' && \
+        ssh -i ${{secrets.SSH2}} ${{secrets.USERNAME}}@${{secrets.IP}} 'nohup java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &'
 
