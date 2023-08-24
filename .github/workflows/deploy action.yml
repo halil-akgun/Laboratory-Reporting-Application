@@ -54,18 +54,23 @@ jobs:
       run: ./mvnw --batch-mode --update-snapshots package
       working-directory: ./
 
-    - name: FTP/SFTP file deployer
-      uses: milanmk/actions-file-deployer@1.12
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        remote-protocol: sftp
-        remote-host: ${{ secrets.IP }}
-        remote-port: 22 # Varsayılan olarak 22 kullanabilirsiniz veya gerektiği gibi değiştirin.
-        remote-user: ${{ secrets.USERNAME }}
-        ssh-private-key: ${{ secrets.SSH }}
-        local-path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
-        remote-path: /home/halilakgun0
-        ftp-post-sync-commands: |
-          pkill -u halilakgun0 'java'
-          sleep 15
-          java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar
-          nohup java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar &
+        username: ${{secrets.USERNAME}}
+        server: ${{secrets.IP}}
+        ssh_private_key: ${{secrets.SSH}}
+        local_path: Laboratory-Reporting-Application/target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
+        remote_path: /home/halilakgun0
+
+    - name: Uygulamayı Sunucuda Yeniden Başlat
+      run: |
+        MAX_RETRIES=3
+        RETRY_INTERVAL=30
+        for ((i=1; i<=MAX_RETRIES; i++)); do
+          ssh -i ${{ secrets.SSH }} ${{ secrets.USERNAME }}@${{ secrets.IP }} 'pkill -u halilakgun0 "java"' && \
+          ssh -i ${{ secrets.SSH }} ${{ secrets.USERNAME }}@${{ secrets.IP }} 'sleep 15' && \
+          ssh -i ${{ secrets.SSH }} ${{ secrets.USERNAME }}@${{ secrets.IP }} 'nohup java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &' && \
+          break
+          sleep $RETRY_INTERVAL
+        done
