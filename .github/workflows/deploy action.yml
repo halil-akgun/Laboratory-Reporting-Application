@@ -54,18 +54,26 @@ jobs:
       run: ./mvnw --batch-mode --update-snapshots package
       working-directory: ./
 
-    - name: FTP/SFTP file deployer
-      uses: milanmk/actions-file-deployer@1.12
+    - name: SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        remote-protocol: sftp
-        remote-host: ${{ secrets.IP }}
-        remote-port: 22 # Varsayılan olarak 22 kullanabilirsiniz veya gerektiği gibi değiştirin.
-        remote-user: ${{ secrets.USERNAME }}
-        ssh-private-key: ${{ secrets.SSH }}
-        local-path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
-        remote-path: /home/halilakgun0
-        ftp-post-sync-commands: |
-          pkill -u halilakgun0 'java'
-          sleep 15
-          java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar
-          nohup java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar &
+        username: ${{secrets.USERNAME}}
+        server: ${{secrets.IP}}
+        ssh_private_key: ${{secrets.SSH}}
+        local_path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
+        remote_path: /home/halilakgun0
+
+   # - name: Add Delay
+   #   run: sleep 10
+
+    - name: Remote SSH Commands
+      uses: fifsky/ssh-action@v0.0.6
+      with:
+        user: ${{secrets.USERNAME}}
+        host: ${{secrets.IP}}
+        key: ${{secrets.SSH}}
+        command: |
+         pkill -u halilakgun0 'java'
+         sleep 15
+         nohup java -jar -Djava.security.edg=file:/dev/./urandom laboratory-reporting-application-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+
