@@ -54,17 +54,17 @@ jobs:
       run: ./mvnw --batch-mode --update-snapshots package
       working-directory: ./
 
-    - name: SFTP Deploy
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-      with:
-        username: ${{secrets.USERNAME}}
-        server: ${{secrets.IP}}
-        ssh_private_key: ${{secrets.SSH}}
-        local_path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
-        remote_path: /home/halilakgun0
+   # - name: SFTP Deploy
+   #   uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+   #   with:
+   #     username: ${{secrets.USERNAME}}
+   #     server: ${{secrets.IP}}
+   #     ssh_private_key: ${{secrets.SSH}}
+   #     local_path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
+   #     remote_path: /home/halilakgun0
 
-    - name: Add Delay
-      run: sleep 10
+   # - name: Add Delay
+   #   run: sleep 10
 
     - name: Restart the Application on the Server
       run: |
