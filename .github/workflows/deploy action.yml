@@ -60,10 +60,10 @@ jobs:
         username: ${{secrets.USERNAME}}
         server: ${{secrets.IP}}
         ssh_private_key: ${{secrets.SSH}}
-        local_path: Laboratory-Reporting-Application/target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
+        local_path: target/laboratory-reporting-application-0.0.1-SNAPSHOT.jar
         remote_path: /home/halilakgun0
 
-    - name: Uygulamayı Sunucuda Yeniden Başlat
+    - name: Restart the Application on the Server
       run: |
         MAX_RETRIES=3
         RETRY_INTERVAL=30
