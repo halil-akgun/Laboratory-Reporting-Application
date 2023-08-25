@@ -2,6 +2,7 @@ package com.ozgur.laboratoryreportingapplication.shared;
 
 import com.ozgur.laboratoryreportingapplication.shared.annotation.FileType;
 import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueFileNumber;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.UniquePatient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -49,5 +51,8 @@ public class ReportSaveRequest {
 
     @FileType(types = {"jpg", "jpeg", "png"})
     private String imageOfReport;
+
+    @UniquePatient
+    private Map<String, String> patientInfoForUniqueControl;
 
 }

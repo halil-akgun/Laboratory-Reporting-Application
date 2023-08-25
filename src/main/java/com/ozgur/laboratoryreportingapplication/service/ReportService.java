@@ -1,9 +1,11 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
 import com.ozgur.laboratoryreportingapplication.controller.UserController;
+import com.ozgur.laboratoryreportingapplication.entity.Patient;
 import com.ozgur.laboratoryreportingapplication.entity.Report;
 import com.ozgur.laboratoryreportingapplication.entity.User;
 import com.ozgur.laboratoryreportingapplication.error.ResourceNotFoundException;
+import com.ozgur.laboratoryreportingapplication.repository.PatientRepository;
 import com.ozgur.laboratoryreportingapplication.repository.ReportRepository;
 import com.ozgur.laboratoryreportingapplication.shared.*;
 import com.ozgur.laboratoryreportingapplication.utils.FileService;
@@ -30,6 +32,7 @@ public class ReportService {
 
     private final ReportRepository reportRepository;
     private final UserService userService;
+    private final PatientRepository patientRepository;
     private final Mapper mapper;
     private final FileService fileService;
     Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -38,8 +41,16 @@ public class ReportService {
     public ResponseMessage<ReportResponse> saveReport(ReportSaveRequest request) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserPojoWithUsername(username);
+
+        Patient patient = patientRepository.findByIdNumber(request.getPatientIdNumber()).orElse(new Patient());
+        patient.setIdNumber(request.getPatientIdNumber().trim());
+        patient.setName(request.getPatientName().trim());
+        patient.setSurname(request.getPatientSurname().trim());
+        Patient savedPatient = patientRepository.save(patient);
+
         Report report = mapper.createReportFromReportSaveRequest(request);
         report.setUser(user);
+        report.setPatient(savedPatient);
         if (request.getImageOfReport() != null) {
             try {
                 String imageName = fileService.writeBase64EncodedStringToFileForReportPicture(request.getImageOfReport());
@@ -57,9 +68,15 @@ public class ReportService {
     }
 
     public void saveDummyReports(ReportSaveRequest request, User user) {
+        Patient patient = Patient.builder()
+                .idNumber(request.getPatientIdNumber())
+                .name(request.getPatientName())
+                .surname(request.getPatientSurname()).build();
+        Patient savedPatient = patientRepository.save(patient);
         Report report = mapper.createReportFromReportSaveRequest(request);
-        report.setImageOfReport(request.getImageOfReport());
         report.setUser(user);
+        report.setPatient(savedPatient);
+        report.setImageOfReport(request.getImageOfReport());
         reportRepository.save(report);
     }
 
@@ -151,9 +168,9 @@ public class ReportService {
             spec = spec.and((root, query, builder) ->
                     builder.or(
                             builder.like(builder.lower(root.get("fileNumber")), "%" + searchTerm.toLowerCase() + "%"),
-                            builder.like(builder.lower(root.get("patientName")), "%" + searchTerm.toLowerCase() + "%"),
-                            builder.like(builder.lower(root.get("patientSurname")), "%" + searchTerm.toLowerCase() + "%"),
-                            builder.like(builder.lower(root.get("patientIdNumber")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("patient").get("idNumber")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("patient").get("name")), "%" + searchTerm.toLowerCase() + "%"),
+                            builder.like(builder.lower(root.get("patient").get("surname")), "%" + searchTerm.toLowerCase() + "%"),
                             builder.like(builder.lower(root.get("diagnosisTitle")), "%" + searchTerm.toLowerCase() + "%"),
                             builder.like(builder.lower(root.get("diagnosisDetails")), "%" + searchTerm.toLowerCase() + "%"),
                             builder.like(builder.lower(root.get("user").get("fullName")), "%" + searchTerm.toLowerCase() + "%")
@@ -202,12 +219,16 @@ public class ReportService {
             report.setImageOfReport(null);
         }
 
+        Patient patient = patientRepository.findByIdNumber(request.getPatientIdNumber()).orElse(new Patient());
+        patient.setIdNumber(request.getPatientIdNumber().trim());
+        patient.setName(request.getPatientName().trim());
+        patient.setSurname(request.getPatientSurname().trim());
+        Patient savedPatient = patientRepository.save(patient);
+
         report.setFileNumber(request.getFileNumberWithId().split("-")[0]);
-        report.setPatientName(request.getPatientName());
-        report.setPatientSurname(request.getPatientSurname());
-        report.setPatientIdNumber(request.getPatientIdNumber());
-        report.setDiagnosisTitle(request.getDiagnosisTitle());
-        report.setDiagnosisDetails(request.getDiagnosisDetails());
+        report.setPatient(savedPatient);
+        report.setDiagnosisTitle(request.getDiagnosisTitle().trim());
+        report.setDiagnosisDetails(request.getDiagnosisDetails().trim());
         report.setDateOfReport(request.getDateOfReport());
 
         Report savedReport = reportRepository.save(report);

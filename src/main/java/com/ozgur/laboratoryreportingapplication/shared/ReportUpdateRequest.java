@@ -1,9 +1,6 @@
 package com.ozgur.laboratoryreportingapplication.shared;
 
-import com.ozgur.laboratoryreportingapplication.shared.annotation.FileNumberPatternForUpdate;
-import com.ozgur.laboratoryreportingapplication.shared.annotation.FileNumberSizeForUpdate;
-import com.ozgur.laboratoryreportingapplication.shared.annotation.FileType;
-import com.ozgur.laboratoryreportingapplication.shared.annotation.UniqueFileNumberForUpdate;
+import com.ozgur.laboratoryreportingapplication.shared.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -51,5 +49,8 @@ public class ReportUpdateRequest {
 
     @FileType(types = {"jpg", "jpeg", "png"})
     private String imageOfReport;
+
+    @UniquePatient
+    private Map<String, String> patientInfoForUniqueControl;
 
 }

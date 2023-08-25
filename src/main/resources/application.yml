@@ -16,13 +16,11 @@ server:
 spring:
   datasource:
 #    url: jdbc:postgresql://localhost:5432/laboratory-reporting-application
-    url: jdbc:h2:./devdb
+    url: jdbc:h2:./laboratory-db
     username: user
     password: password
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: create
     properties:
       javax:
         persistence:
@@ -46,12 +44,18 @@ spring:
 ---
 spring:
   profiles: production
+  jpa:
+    hibernate:
+      ddl-auto: update
 laboratory:
   upload-path-for-profile-picture: uploads-production/profilepictures/
   upload-path-for-report-picture: uploads-production/reportpictures/
 ---
 spring:
   profiles: dev
+  jpa:
+    hibernate:
+      ddl-auto: create
 laboratory:
   upload-path-for-profile-picture: uploads-dev/profilepictures/
   upload-path-for-report-picture: uploads-dev/reportpictures/

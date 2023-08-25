@@ -95,12 +95,15 @@ public class LaboratoryReportingApplication implements CommandLineRunner/*, Asyn
                         report.setDiagnosisTitle(db.getDiagnosisTitle(indexForDiagnosis));
                         report.setDiagnosisDetails(db.getDiagnosisDetails(indexForDiagnosis));
                         report.setImageOfReport("sampleReport.png");
+                        int min = 10000000;
+                        int max = 99999999;
+                        int randomIdNumber = random.nextInt(max - min + 1) + min;
                         if (i < 10) {
                             report.setFileNumber("2022" + monthValue + "0" + i + j);
-                            report.setPatientIdNumber(String.valueOf(i).repeat(11));
+                            report.setPatientIdNumber(randomIdNumber + "0" + i + j);
                         } else {
                             report.setFileNumber("2022" + monthValue + i + j);
-                            report.setPatientIdNumber(String.valueOf(i).repeat(5) + i / 10);
+                            report.setPatientIdNumber(randomIdNumber + "" + i + j);
                         }
                         reportService.saveDummyReports(report, savedUser);
                     }

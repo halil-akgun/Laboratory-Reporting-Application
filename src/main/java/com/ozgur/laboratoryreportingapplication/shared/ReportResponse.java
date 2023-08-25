@@ -41,4 +41,6 @@ public class ReportResponse {
 
     private String laborantUsername;
 
+    private Long patientId;
+
 }

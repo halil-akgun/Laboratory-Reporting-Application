@@ -23,14 +23,8 @@ public class Report {
     @Column(length = 9, nullable = false, unique = true)
     private String fileNumber;
 
-    @Column(length = 25, nullable = false)
-    private String patientName;
-
-    @Column(length = 25, nullable = false)
-    private String patientSurname;
-
-    @Column(length = 11, nullable = false)
-    private String patientIdNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Patient patient;
 
     @Column(length = 40, nullable = false)
     private String diagnosisTitle;

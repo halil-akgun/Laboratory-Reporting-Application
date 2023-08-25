@@ -22,10 +22,10 @@ public class Mapper {
 
     public User createUserFromRegisterRequest(RegisterRequest request) {
         return User.builder()
-                .username(request.getUsername())
-                .name(request.getName())
-                .surname(request.getSurname())
-                .hospitalIdNumber(request.getHospitalIdNumber())
+                .username(request.getUsername().trim())
+                .name(request.getName().trim())
+                .surname(request.getSurname().trim())
+                .hospitalIdNumber(request.getHospitalIdNumber().trim())
                 .build();
     }
 
@@ -42,26 +42,24 @@ public class Mapper {
 
     public Report createReportFromReportSaveRequest(ReportSaveRequest request) {
         return Report.builder()
-                .patientName(request.getPatientName())
-                .patientSurname(request.getPatientSurname())
-                .diagnosisTitle(request.getDiagnosisTitle())
-                .diagnosisDetails(request.getDiagnosisDetails())
+                .diagnosisTitle(request.getDiagnosisTitle().trim())
+                .diagnosisDetails(request.getDiagnosisDetails().trim())
                 .dateOfReport(request.getDateOfReport())
-                .fileNumber(request.getFileNumber())
-                .patientIdNumber(request.getPatientIdNumber())
+                .fileNumber(request.getFileNumber().trim())
                 .timestamp(LocalDate.now()).build();
     }
 
     public ReportResponse createReportResponseFromReport(Report report) {
         return ReportResponse.builder()
                 .id(report.getId())
-                .patientName(report.getPatientName())
-                .patientSurname(report.getPatientSurname())
+                .patientName(report.getPatient().getName())
+                .patientSurname(report.getPatient().getSurname())
+                .patientIdNumber(report.getPatient().getIdNumber())
+                .patientId(report.getPatient().getId())
                 .diagnosisTitle(report.getDiagnosisTitle())
                 .diagnosisDetails(report.getDiagnosisDetails())
                 .dateOfReport(report.getDateOfReport())
                 .fileNumber(report.getFileNumber())
-                .patientIdNumber(report.getPatientIdNumber())
                 .imageOfReport(report.getImageOfReport())
                 .timestamp(report.getTimestamp())
                 .laborantNameSurname(report.getUser().getFullName())
