@@ -8,7 +8,9 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 
 import com.ozgur.laboratoryreportingapplication.configuration.UserDetailsImpl;
+import com.ozgur.laboratoryreportingapplication.entity.Token;
 import com.ozgur.laboratoryreportingapplication.entity.User;
+import com.ozgur.laboratoryreportingapplication.repository.TokenRepository;
 import com.ozgur.laboratoryreportingapplication.repository.UserRepository;
 import com.ozgur.laboratoryreportingapplication.shared.LoginResponse;
 import com.ozgur.laboratoryreportingapplication.utils.Mapper;

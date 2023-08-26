@@ -1,6 +1,5 @@
-package com.ozgur.laboratoryreportingapplication.auth;
+package com.ozgur.laboratoryreportingapplication.entity;
 
-import com.ozgur.laboratoryreportingapplication.entity.User;
 import lombok.Data;
 
 import javax.persistence.Entity;

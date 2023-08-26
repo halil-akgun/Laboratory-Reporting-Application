@@ -15,11 +15,11 @@ public class ReportSecurityService {
 
     private final ReportRepository reportRepository;
 
-    public boolean isAllowedToDelete(Long id, UserDetailsImpl loggedInUser) {
-        Optional<Report> optionalReport = reportRepository.findById(id);
-        return (optionalReport.filter(report -> Objects.equals(report.getUser().getId(), loggedInUser.getUser().getId())).isPresent()) ||
-                (loggedInUser.getUser().getUsername().equals("admin"));
-    }
+//    public boolean isAllowedToDelete(Long id, UserDetailsImpl loggedInUser) {
+//        Optional<Report> optionalReport = reportRepository.findById(id);
+//        return (optionalReport.filter(report -> Objects.equals(report.getUser().getId(), loggedInUser.getUser().getId())).isPresent()) ||
+//                (loggedInUser.getUser().getUsername().equals("admin"));
+//    }
 
     public boolean isAllowedToUpdate(Long id, UserDetailsImpl loggedInUser) {
         Optional<Report> optionalReport = reportRepository.findById(id);

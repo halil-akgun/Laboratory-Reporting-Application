@@ -2,7 +2,6 @@ package com.ozgur.laboratoryreportingapplication.entity;
 
 import javax.persistence.*;
 
-import com.ozgur.laboratoryreportingapplication.auth.Token;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,7 +33,7 @@ public class User {
     @Column(length = 7, nullable = false, unique = true)
     private String hospitalIdNumber;
 
-    @Column(length = 255, nullable = false)
+    @Column(nullable = false)
     private String password;
 
     @ManyToOne

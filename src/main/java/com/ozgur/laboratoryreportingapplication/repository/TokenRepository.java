@@ -1,5 +1,6 @@
-package com.ozgur.laboratoryreportingapplication.auth;
+package com.ozgur.laboratoryreportingapplication.repository;
 
+import com.ozgur.laboratoryreportingapplication.entity.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;

@@ -1,6 +1,5 @@
 package com.ozgur.laboratoryreportingapplication.service;
 
-import com.ozgur.laboratoryreportingapplication.controller.UserController;
 import com.ozgur.laboratoryreportingapplication.entity.Patient;
 import com.ozgur.laboratoryreportingapplication.entity.Report;
 import com.ozgur.laboratoryreportingapplication.entity.User;
@@ -35,7 +34,7 @@ public class ReportService {
     private final PatientRepository patientRepository;
     private final Mapper mapper;
     private final FileService fileService;
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    Logger logger = LoggerFactory.getLogger(ReportService.class);
 
 
     public ResponseMessage<ReportResponse> saveReport(ReportSaveRequest request) {
@@ -60,6 +59,8 @@ public class ReportService {
             }
         }
         Report savedReport = reportRepository.save(report);
+
+        logger.warn("A report has been saved by laborant " + username);
 
         return ResponseMessage.<ReportResponse>builder()
                 .message("Report saved successfully")
