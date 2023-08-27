@@ -22,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping("/logout2")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     ResponseMessage<?> handleLogout(@RequestHeader(name = "Authorization") String authorization) {
 
         String token = authorization.substring(7);

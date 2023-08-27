@@ -29,7 +29,7 @@ public class Mapper {
                 .build();
     }
 
-    public UserResponse createUserResponseFromAssistant(User user) {
+    public UserResponse createUserResponseFromUser(User user) {
         return UserResponse.builder()
                 .username(user.getUsername())
                 .name(user.getName())

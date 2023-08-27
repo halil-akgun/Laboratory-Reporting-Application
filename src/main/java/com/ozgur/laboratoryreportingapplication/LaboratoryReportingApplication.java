@@ -45,7 +45,7 @@ public class LaboratoryReportingApplication implements CommandLineRunner/*, Asyn
         // Fill the RoleType table
         if (userRoleService.getAllUserRole().isEmpty()) {
             userRoleService.save(RoleType.ROLE_ADMIN);
-            userRoleService.save(RoleType.ROLE_LABORATORY_ASSISTANT);
+            userRoleService.save(RoleType.ROLE_LABORANT);
         }
 
         // Create ADMIN (built_in)

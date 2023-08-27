@@ -31,15 +31,15 @@ public class UserController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseMessage<UserResponse> save(@Valid @RequestBody RegisterRequest request) {
+    public ResponseMessage<UserResponse> saveUser(@Valid @RequestBody RegisterRequest request) {
 
         User savedUser = userService.saveUser(request);
-        logger.info("Assistant saved with username " + request.getUsername());
+        logger.info("User saved with username " + request.getUsername());
 
         return ResponseMessage.<UserResponse>builder()
-                .message("Assistant saved.")
+                .message("User saved.")
                 .httpStatus(HttpStatus.CREATED)
-                .object(mapper.createUserResponseFromAssistant(savedUser)).build();
+                .object(mapper.createUserResponseFromUser(savedUser)).build();
     }
 
     @DeleteMapping("/delete/{username}")
@@ -49,13 +49,13 @@ public class UserController {
     }
 
     @GetMapping("getAllUsers")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     Page<UserResponse> getAllUsers(Pageable pageable, @CurrentUser UserDetailsImpl userDetails) {
         return userService.getAllUsers(pageable, userDetails);
     }
 
     @GetMapping("/{username}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     UserResponse getUser(@PathVariable String username) {
         return userService.getUser(username);
     }

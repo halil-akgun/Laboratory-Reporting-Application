@@ -49,17 +49,17 @@ public class UserService {
     }
 
     public User saveUser(RegisterRequest request) {
-        userRepository.findByUsername(request.getUsername()).ifPresent(assistant -> {
+        userRepository.findByUsername(request.getUsername()).ifPresent(user -> {
             throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_USERNAME, request.getUsername()));
         });
-        userRepository.findByHospitalIdNumber(request.getHospitalIdNumber()).ifPresent(assistant -> {
+        userRepository.findByHospitalIdNumber(request.getHospitalIdNumber()).ifPresent(user -> {
             throw new ConflictException(String.format(Messages.ALREADY_REGISTER_WITH_HOSPITAL_ID_NUMBER, request.getHospitalIdNumber()));
         });
 
         User user = mapper.createUserFromRegisterRequest(request);
 
         user.setFullName(user.getName() + " " + user.getSurname());
-        user.setUserRole(userRoleService.getUserRole(RoleType.ROLE_LABORATORY_ASSISTANT));
+        user.setUserRole(userRoleService.getUserRole(RoleType.ROLE_LABORANT));
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         return userRepository.save(user);
@@ -67,13 +67,13 @@ public class UserService {
 
     public Page<UserResponse> getAllUsers(Pageable pageable, UserDetailsImpl userDetails) {
         return userRepository.findByUsernameNot(pageable, userDetails.getUsername())
-                .map(mapper::createUserResponseFromAssistant);
+                .map(mapper::createUserResponseFromUser);
     }
 
     public UserResponse getUser(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(() ->
                 new ResourceNotFoundException(String.format(Messages.USER_NOT_FOUND_WITH_USERNAME, username)));
-        return mapper.createUserResponseFromAssistant(user);
+        return mapper.createUserResponseFromUser(user);
     }
 
     public ResponseMessage<UserResponse> updateUser(String username, UserUpdateRequest request) {
@@ -107,7 +107,7 @@ public class UserService {
         return ResponseMessage.<UserResponse>builder()
                 .message("User updated.")
                 .httpStatus(HttpStatus.OK)
-                .object(mapper.createUserResponseFromAssistant(savedUser)).build();
+                .object(mapper.createUserResponseFromUser(savedUser)).build();
     }
 
     public User getUserPojoWithUsername(String username) {

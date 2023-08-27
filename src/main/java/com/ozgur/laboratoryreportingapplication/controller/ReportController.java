@@ -23,20 +23,20 @@ public class ReportController {
     private final ReportService reportService;
 
     @PostMapping("/save")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseMessage<ReportResponse> saveReport(@Valid @RequestBody ReportSaveRequest request) {
         return reportService.saveReport(request);
     }
 
     @GetMapping("getAllReports")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     Page<ReportResponse> getAllReports(Pageable pageable, @RequestParam(name = "myReports") String myReports) {
         return reportService.getAllReports(pageable, myReports);
     }
 
     @GetMapping("searchInReports")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     Page<ReportResponse> searchInReports(
             Pageable pageable,
             @RequestParam(name = "searchTerm") String searchTerm,
@@ -55,7 +55,7 @@ public class ReportController {
     }
 
     @GetMapping("getReport/{id:[0-9]+}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORATORY_ASSISTANT')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_LABORANT')")
     ReportResponse getReportById(@PathVariable Long id) {
         return reportService.getReportById(id);
     }

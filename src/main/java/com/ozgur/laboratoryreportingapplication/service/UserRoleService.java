@@ -15,25 +15,25 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserRoleService {
 
-	private final UserRoleRepository userRoleRepository;
+    private final UserRoleRepository userRoleRepository;
 
-	public UserRole getUserRole(RoleType roleType) {
+    public UserRole getUserRole(RoleType roleType) {
 
-		return userRoleRepository.findByRoleType(roleType).orElse(null);
+        return userRoleRepository.findByRoleType(roleType).orElse(null);
 
-	}
+    }
 
-	public List<UserRole> getAllUserRole() {
-		return userRoleRepository.findAll();
-	}
-	
-	  public UserRole save(RoleType roleType) {
+    public List<UserRole> getAllUserRole() {
+        return userRoleRepository.findAll();
+    }
 
-	        if (userRoleRepository.existsByRoleType(roleType))
-	            throw new ConflictException("This role is already registered.");
+    public UserRole save(RoleType roleType) {
 
-	        UserRole userRole = UserRole.builder().roleType(roleType).build();
-	        return userRoleRepository.save(userRole);
-	    }
+        if (userRoleRepository.existsByRoleType(roleType))
+            throw new ConflictException("This role is already registered.");
+
+        UserRole userRole = UserRole.builder().roleType(roleType).build();
+        return userRoleRepository.save(userRole);
+    }
 
 }
