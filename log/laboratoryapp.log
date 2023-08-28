@@ -17764,3 +17764,241 @@ This generated password is for development use only. Your security configuration
 2023-08-28 13:11:12,468 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-08-28 13:11:12,471 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
 2023-08-28 13:11:12,473 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+2023-08-28 13:11:15,683 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Starting LaboratoryReportingApplication using Java 20 on halil with PID 9008 (D:\Projects\Others\laboratory-report-management\laboratory-reporting-application\target\classes started by halil in D:\Projects\Others\laboratory-report-management\laboratory-reporting-application)
+2023-08-28 13:11:15,684 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:The following 1 profile is active: "dev"
+2023-08-28 13:11:15,732 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 55:13]
+2023-08-28 13:11:15,732 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 46:13]
+2023-08-28 13:11:15,735 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-28 13:11:15,735 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-28 13:11:16,295 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-28 13:11:16,351 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 49 ms. Found 5 JPA repository interfaces.
+2023-08-28 13:11:16,900 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+2023-08-28 13:11:16,914 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+2023-08-28 13:11:16,914 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-08-28 13:11:16,984 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+2023-08-28 13:11:16,984 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1248 ms
+2023-08-28 13:11:17,009 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+2023-08-28 13:11:17,185 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+2023-08-28 13:11:17,194 INFO  [restartedMain] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration:H2 console available at '/h2-console'. Database available at 'jdbc:h2:./laboratory-db'
+2023-08-28 13:11:17,305 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-28 13:11:17,341 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-28 13:11:17,447 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-28 13:11:17,527 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-08-28 13:11:17,954 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-28 13:11:17,960 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 13:11:18,564 WARN  [restartedMain] org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration:
+
+Using generated security password: 2ac97ee0-c73d-41c1-bb6e-04a8572645be
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-08-28 13:11:18,644 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-28 13:11:18,790 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@403e4a99, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@428bac17, org.springframework.security.web.context.SecurityContextPersistenceFilter@f92a5fe, org.springframework.security.web.header.HeaderWriterFilter@74d2112, org.springframework.web.filter.CorsFilter@4f2d5134, org.springframework.security.web.authentication.logout.LogoutFilter@758cf061, com.ozgur.laboratoryreportingapplication.configuration.TokenFilter@701ac8ff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@ca6ac98, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10a8cccf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10d377d2, org.springframework.security.web.session.SessionManagementFilter@f11c89b, org.springframework.security.web.access.ExceptionTranslationFilter@314ebacf, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@68fd5950]
+2023-08-28 13:11:18,942 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
+2023-08-28 13:11:18,967 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-28 13:11:18,979 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Started LaboratoryReportingApplication in 3.657 seconds (JVM running for 4.062)
+2023-08-28 13:11:19,023 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 13:11:30,206 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-28 13:13:26,649 WARN  [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:17:01,114 INFO  [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:18:03,922 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:19:12,737 INFO  [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:19:23,794 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:20:15,916 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:20:25,144 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:21:18,989 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 13:25:27,789 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:25:36,807 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:26:30,606 INFO  [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:26:31,224 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 13:27:37,916 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:31:18,986 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 13:31:33,982 WARN  [http-nio-8080-exec-5] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:31:36,901 WARN  [http-nio-8080-exec-6] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:31:51,928 WARN  [http-nio-8080-exec-7] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:32:00,612 WARN  [http-nio-8080-exec-9] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:32:03,437 WARN  [http-nio-8080-exec-10] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:36:08,638 WARN  [http-nio-8080-exec-8] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:36:16,844 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:40:31,778 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:40:53,053 INFO  [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:41:18,986 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 13:41:34,924 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:41:54,091 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:43:17,684 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:43:34,348 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:44:20,922 INFO  [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:46:30,487 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:46:33,387 INFO  [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:46:43,203 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:47:31,529 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:48:43,908 INFO  [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:51:18,980 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 13:51:29,738 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:52:10,061 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:52:12,326 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 13:52:37,027 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:53:01,995 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 13:53:16,283 WARN  [http-nio-8080-exec-3] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:53:17,840 WARN  [http-nio-8080-exec-7] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:53:25,048 WARN  [http-nio-8080-exec-3] org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver:Resolved [com.ozgur.laboratoryreportingapplication.auth.AuthException]
+2023-08-28 13:53:35,489 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:54:20,068 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:54:50,246 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:54:50,648 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 13:54:51,615 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 13:55:13,557 INFO  [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:55:14,576 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 13:55:31,140 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:57:38,314 WARN  [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [2] in org.springframework.http.ResponseEntity<?> com.ozgur.laboratoryreportingapplication.controller.ReportController.updateReport(java.lang.Long,boolean,com.ozgur.laboratoryreportingapplication.shared.ReportUpdateRequest): [Field error in object 'reportUpdateRequest' on field 'patientInfoForUniqueControl': rejected value [{idNumber=99403928051, name=Cemil1, surname=Demir}]; codes [UniquePatient.reportUpdateRequest.patientInfoForUniqueControl,UniquePatient.patientInfoForUniqueControl,UniquePatient.java.util.Map,UniquePatient]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [reportUpdateRequest.patientInfoForUniqueControl,patientInfoForUniqueControl]; arguments []; default message [patientInfoForUniqueControl]]; default message [There is inconsistency in patient information. Name and surname do not match with the patient ID number in the database.]] ]
+2023-08-28 13:58:38,261 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:58:55,536 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 13:59:01,113 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 13:59:01,892 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 14:01:18,981 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 14:01:21,081 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 14:01:25,900 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 14:01:45,430 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 14:01:51,842 INFO  [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 14:01:57,485 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 14:05:15,805 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 14:11:18,988 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 14:13:05,688 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 14:13:05,692 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+2023-08-28 14:13:05,693 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+2023-08-28 22:31:40,120 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Starting LaboratoryReportingApplication using Java 20 on halil with PID 13860 (D:\Projects\Others\laboratory-report-management\laboratory-reporting-application\target\classes started by halil in D:\Projects\Others\laboratory-report-management\laboratory-reporting-application)
+2023-08-28 22:31:40,122 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:The following 1 profile is active: "dev"
+2023-08-28 22:31:40,197 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 55:13]
+2023-08-28 22:31:40,197 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 46:13]
+2023-08-28 22:31:40,199 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-28 22:31:40,199 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-28 22:31:41,424 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-28 22:31:41,579 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 144 ms. Found 5 JPA repository interfaces.
+2023-08-28 22:31:43,804 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+2023-08-28 22:31:43,826 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+2023-08-28 22:31:43,827 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-08-28 22:31:44,111 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+2023-08-28 22:31:44,111 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 3912 ms
+2023-08-28 22:31:44,160 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+2023-08-28 22:31:46,037 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+2023-08-28 22:31:46,046 INFO  [restartedMain] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration:H2 console available at '/h2-console'. Database available at 'jdbc:h2:./laboratory-db'
+2023-08-28 22:31:46,611 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-28 22:31:46,748 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-28 22:31:47,035 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-28 22:31:47,257 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-08-28 22:31:49,050 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-28 22:31:49,059 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 22:31:50,614 WARN  [restartedMain] org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration:
+
+Using generated security password: c76eb459-7b0c-4a24-b52f-0ab1f4c56014
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-08-28 22:31:50,803 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-28 22:31:51,232 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@67098db6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71237e57, org.springframework.security.web.context.SecurityContextPersistenceFilter@38ebfcc6, org.springframework.security.web.header.HeaderWriterFilter@a870ce5, org.springframework.web.filter.CorsFilter@618a89e5, org.springframework.security.web.authentication.logout.LogoutFilter@355e5f44, com.ozgur.laboratoryreportingapplication.configuration.TokenFilter@6aa14907, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@118ef3f1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d0b0058, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b305f7b, org.springframework.security.web.session.SessionManagementFilter@19be52e4, org.springframework.security.web.access.ExceptionTranslationFilter@a8f2671, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@e2dbc3]
+2023-08-28 22:31:51,674 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
+2023-08-28 22:31:51,743 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-28 22:31:51,761 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Started LaboratoryReportingApplication in 12.23 seconds (JVM running for 12.921)
+2023-08-28 22:31:51,817 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 22:32:02,237 INFO  [http-nio-8080-exec-4] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-28 22:32:02,523 INFO  [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 22:33:03,604 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 22:34:16,900 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 22:35:18,246 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 22:35:41,151 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:39:11,013 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:39:12,317 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:39:47,777 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:39:49,330 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:41:51,767 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 22:43:55,482 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:43:56,495 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:43:57,549 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 22:44:06,634 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:44:36,330 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:44:38,636 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:45:04,596 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:45:05,354 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:45:35,881 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:50:10,051 INFO  [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 22:50:24,624 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:50:24,910 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:50:32,827 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 22:51:02,885 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:51:04,217 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:51:33,863 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 22:51:51,762 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 22:52:53,292 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:52:54,302 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:52:55,705 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 22:53:26,040 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:53:27,048 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:53:57,044 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 22:55:47,653 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:55:49,316 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:56:17,724 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:56:19,331 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:56:37,999 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:56:39,324 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:57:08,006 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:57:09,317 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:59:17,237 ERROR [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:59:18,330 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:59:47,253 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 22:59:48,324 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:01:35,087 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:01:51,764 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 23:02:05,160 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:02:23,854 INFO  [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:03:24,893 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:03:42,974 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:05:23,643 ERROR [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:05:25,330 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:06:37,615 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:06:37,866 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:06:43,029 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:07:45,319 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:07:45,937 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:08:46,633 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:10:26,394 ERROR [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:10:27,403 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:10:35,078 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:11:05,426 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:11:06,444 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:11:37,634 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:11:51,774 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 23:14:40,550 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:14:41,563 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:14:47,677 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:15:18,021 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:15:19,316 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:15:41,359 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:15:41,614 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:15:57,195 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:16:29,632 INFO  [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:16:50,663 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:17:59,577 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:18:19,416 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:20:57,033 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:21:51,770 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 23:24:53,214 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:24:54,877 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:25:12,212 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:25:50,694 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:25:51,708 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:25:56,206 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:26:26,554 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:26:27,577 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:28:50,529 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:28:55,612 INFO  [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:29:03,881 INFO  [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
+2023-08-28 23:29:33,944 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:30:38,349 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:30:39,893 ERROR [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:31:25,585 ERROR [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:31:26,597 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
+2023-08-28 23:31:53,327 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2023-08-28 23:31:59,804 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
+2023-08-28 23:32:47,998 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-28 23:32:48,002 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+2023-08-28 23:32:48,004 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
