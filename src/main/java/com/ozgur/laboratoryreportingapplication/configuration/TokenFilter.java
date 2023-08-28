@@ -27,9 +27,11 @@ public class TokenFilter extends OncePerRequestFilter {
 		String authorization = request.getHeader("Authorization");
 		if(authorization != null) {
 			String token = authorization.substring(7);
-			
-			UserDetails user = authService.getUserDetails(token);
-			if(user != null) {				
+			boolean sessionValidityCheck = request.getHeader("Session-Validity-Check") != null && request.getHeader("Session-Validity-Check").equalsIgnoreCase("true");
+
+			UserDetails user = authService.getUserDetails(token, sessionValidityCheck);
+
+			if(user != null) {
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(authentication);

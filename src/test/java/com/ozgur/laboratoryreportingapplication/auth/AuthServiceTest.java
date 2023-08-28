@@ -65,7 +65,7 @@ class AuthServiceTest {
 
         when(tokenRepository.findById("testToken")).thenReturn(Optional.of(tokenEntity));
 
-        UserDetails userDetails = authService.getUserDetails(token);
+        UserDetails userDetails = authService.getUserDetails(token, false);
 
         assertNotNull(userDetails);
         assertEquals("testUsername", userDetails.getUsername());

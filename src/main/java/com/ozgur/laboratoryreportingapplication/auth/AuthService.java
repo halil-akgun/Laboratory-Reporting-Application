@@ -1,9 +1,7 @@
 package com.ozgur.laboratoryreportingapplication.auth;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
@@ -65,9 +63,11 @@ public class AuthService {
     }
 
     @Transactional
-    public UserDetails getUserDetails(String token) {
+    public UserDetails getUserDetails(String token, boolean sessionValidityCheck) {
         Optional<Token> optionalToken = tokenRepository.findById(token);
-        optionalToken.ifPresent(value -> value.setLastActionTime(LocalDateTime.now()));
+        if (optionalToken.isPresent() && !sessionValidityCheck) {
+            optionalToken.get().setLastActionTime(LocalDateTime.now());
+        }
         return optionalToken.map(value -> new UserDetailsImpl(value.getUser())).orElse(null);
     }
 
@@ -83,7 +83,6 @@ public class AuthService {
     }
 
 
-
     @Scheduled(fixedRate = 10 * 60 * 1000)
     public void cleanupExpiredTokens() {
         LocalDateTime eightHoursAgo = LocalDateTime.now().minusHours(8);
@@ -93,5 +92,44 @@ public class AuthService {
         tokenRepository.deleteAll(expiredTokens);
 
         logger.info(expiredTokens.size() + " expired tokens have been cleaned up.");
+    }
+
+    public Map<String, Boolean> sessionValidityCheck(String token) {
+        boolean isExist = tokenRepository.existsById(token);
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("isSessionActive", isExist);
+        return result;
+    }
+
+    public Map<String, Boolean> checkSessionOnAnotherDevice(Credentials credentials) {
+        User user = userRepository.findByUsername(credentials.getUsername()).orElse(null);
+        if (user == null) {
+            throw new AuthException();
+        }
+        boolean matches = passwordEncoder.matches(credentials.getPassword(), user.getPassword());
+        if (!matches) {
+            throw new AuthException();
+        }
+
+        List<Token> userTokens = tokenRepository.findByUser(user);
+
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("isThereAnotherSession", !userTokens.isEmpty());
+        return result;
+    }
+
+    public void closeOtherSessions(Credentials credentials) {
+        User user = userRepository.findByUsername(credentials.getUsername()).orElse(null);
+        if (user == null) {
+            throw new AuthException();
+        }
+        boolean matches = passwordEncoder.matches(credentials.getPassword(), user.getPassword());
+        if (!matches) {
+            throw new AuthException();
+        }
+
+        List<Token> userTokens = tokenRepository.findByUser(user);
+
+        tokenRepository.deleteAll(userTokens);
     }
 }

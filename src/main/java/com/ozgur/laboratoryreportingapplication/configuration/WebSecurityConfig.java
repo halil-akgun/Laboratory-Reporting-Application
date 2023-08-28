@@ -59,6 +59,9 @@ public class WebSecurityConfig {
             "/*.js",
             "/*.json",
             "/users/save",
+            "/sessionValidityCheck",
+            "/checkSessionOnAnotherDevice",
+            "/closeOtherSessions",
             "/auth"
     };
 }
