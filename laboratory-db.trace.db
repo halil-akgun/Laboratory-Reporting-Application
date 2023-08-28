@@ -1,0 +1,2 @@
+2023-08-28 11:29:34 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-214]
