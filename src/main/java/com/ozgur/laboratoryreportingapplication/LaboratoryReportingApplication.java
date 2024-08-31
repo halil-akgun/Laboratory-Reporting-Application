@@ -94,7 +94,7 @@ public class LaboratoryReportingApplication implements CommandLineRunner/*, Asyn
                         int indexForDiagnosis = random.nextInt(10);
                         report.setDiagnosisTitle(db.getDiagnosisTitle(indexForDiagnosis));
                         report.setDiagnosisDetails(db.getDiagnosisDetails(indexForDiagnosis));
-                        report.setImageOfReport("sampleReport.png");
+                        report.setImageOfReport(j == 2 ? null : "sampleReport.png");
                         int min = 10000000;
                         int max = 99999999;
                         int randomIdNumber = random.nextInt(max - min + 1) + min;

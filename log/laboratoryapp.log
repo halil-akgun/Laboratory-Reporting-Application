@@ -1,114 +1,31 @@
-2023-09-05 18:17:43,386 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Starting LaboratoryReportingApplication using Java 20 on halil with PID 4796 (D:\Projects\Others\laboratory-report-management\laboratory-reporting-application\target\classes started by halil in D:\Projects\Others\laboratory-report-management\laboratory-reporting-application)
-2023-09-05 18:17:43,394 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:The following 1 profile is active: "dev"
-2023-09-05 18:17:43,467 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 55:13]
-2023-09-05 18:17:43,468 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 46:13]
-2023-09-05 18:17:43,469 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-09-05 18:17:43,470 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-09-05 18:17:44,255 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-05 18:17:44,312 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 50 ms. Found 5 JPA repository interfaces.
-2023-09-05 18:17:44,940 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-2023-09-05 18:17:44,949 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-2023-09-05 18:17:44,949 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.78]
-2023-09-05 18:17:45,019 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-2023-09-05 18:17:45,019 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1549 ms
-2023-09-05 18:17:45,044 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-2023-09-05 18:17:45,315 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-2023-09-05 18:17:45,326 INFO  [restartedMain] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration:H2 console available at '/h2-console'. Database available at 'jdbc:h2:./laboratory-db'
-2023-09-05 18:17:45,490 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-05 18:17:45,557 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-09-05 18:17:45,715 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-09-05 18:17:45,824 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-09-05 18:17:46,365 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-05 18:17:46,371 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-05 18:17:47,086 WARN  [restartedMain] org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration:
+2024-09-01 00:17:17,350 INFO  [main] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplicationTests:Starting LaboratoryReportingApplicationTests using Java 17.0.12 on DESKTOP-UUVE54M with PID 18764 (started by halil in D:\Projects\Others\laboratory-report-management\laboratory-reporting-application)
+2024-09-01 00:17:17,357 INFO  [main] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplicationTests:The following 1 profile is active: "dev"
+2024-09-01 00:17:17,420 WARN  [main] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 55:13]
+2024-09-01 00:17:17,421 WARN  [main] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 46:13]
+2024-09-01 00:17:18,335 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-01 00:17:18,440 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 94 ms. Found 5 JPA repository interfaces.
+2024-09-01 00:17:19,283 INFO  [main] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-01 00:17:19,369 INFO  [main] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-01 00:17:19,452 INFO  [main] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-01 00:17:19,619 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+2024-09-01 00:17:19,950 INFO  [main] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+2024-09-01 00:17:19,990 INFO  [main] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-01 00:17:20,677 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-01 00:17:20,689 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-01 00:17:22,180 WARN  [main] org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration:
 
-Using generated security password: 01927208-2a6f-41bd-8775-de3763d940f5
+Using generated security password: d31274f7-220f-4b93-9620-cf702b9250ed
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2023-09-05 18:17:47,191 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-05 18:17:47,398 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6de1b0c7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a7e1fe2, org.springframework.security.web.context.SecurityContextPersistenceFilter@43a3d5f, org.springframework.security.web.header.HeaderWriterFilter@423e502f, org.springframework.web.filter.CorsFilter@3fd42907, org.springframework.security.web.authentication.logout.LogoutFilter@4a43d9f5, com.ozgur.laboratoryreportingapplication.configuration.TokenFilter@6d600075, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ed42a9a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@126f9b77, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7aa6eeff, org.springframework.security.web.session.SessionManagementFilter@75f41a40, org.springframework.security.web.access.ExceptionTranslationFilter@5e6347fe, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@432c9293]
-2023-09-05 18:17:47,582 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
-2023-09-05 18:17:47,652 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-05 18:17:47,666 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Started LaboratoryReportingApplication in 4.803 seconds (JVM running for 5.411)
-2023-09-05 18:17:47,708 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 18:22:48,829 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-05 18:22:49,113 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:27:47,674 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 18:29:18,835 INFO  [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
-2023-09-05 18:29:28,637 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:29:34,714 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
-2023-09-05 18:29:34,972 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:31:34,985 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:37:47,678 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 18:44:52,623 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:44:58,621 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:46:58,955 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
-2023-09-05 18:47:12,387 INFO  [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:47:47,669 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 18:47:47,977 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:47:57,305 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:48:00,212 ERROR [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:48:02,162 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:48:11,129 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:48:56,358 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:48:58,338 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:48:59,460 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:49:01,228 ERROR [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:49:02,757 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:49:12,422 INFO  [http-nio-8080-exec-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
-2023-09-05 18:49:21,663 ERROR [http-nio-8080-exec-4] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:49:42,338 ERROR [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:53:21,184 ERROR [http-nio-8080-exec-3] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:53:21,196 ERROR [http-nio-8080-exec-7] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:57:47,672 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 18:58:32,792 ERROR [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:58:39,309 INFO  [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:58:39,387 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:58:51,281 INFO  [http-nio-8080-exec-6] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
-2023-09-05 18:59:40,664 ERROR [http-nio-8080-exec-10] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 18:59:44,033 INFO  [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 18:59:58,279 INFO  [http-nio-8080-exec-5] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged out with username admin
-2023-09-05 18:59:58,544 ERROR [http-nio-8080-exec-8] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 19:00:45,386 ERROR [http-nio-8080-exec-9] com.ozgur.laboratoryreportingapplication.configuration.AuthEntryPoint:Unauthorized error: Full authentication is required to access this resource
-2023-09-05 19:07:47,677 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 19:17:47,665 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 23:26:03,440 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Starting LaboratoryReportingApplication using Java 20 on halil with PID 13284 (D:\Projects\Others\laboratory-report-management\laboratory-reporting-application\target\classes started by halil in D:\Projects\Others\laboratory-report-management\laboratory-reporting-application)
-2023-09-05 23:26:03,441 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:The following 1 profile is active: "dev"
-2023-09-05 23:26:03,508 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 55:13]
-2023-09-05 23:26:03,508 WARN  [restartedMain] org.springframework.boot.context.config.ConfigDataEnvironment:Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 46:13]
-2023-09-05 23:26:03,509 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-09-05 23:26:03,509 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-09-05 23:26:18,131 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-05 23:26:20,938 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 2799 ms. Found 5 JPA repository interfaces.
-2023-09-05 23:26:21,602 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-2023-09-05 23:26:21,613 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-2023-09-05 23:26:21,614 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.78]
-2023-09-05 23:26:21,692 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-2023-09-05 23:26:21,693 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 18183 ms
-2023-09-05 23:26:21,721 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-2023-09-05 23:26:21,997 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-2023-09-05 23:26:22,007 INFO  [restartedMain] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration:H2 console available at '/h2-console'. Database available at 'jdbc:h2:./laboratory-db'
-2023-09-05 23:26:22,154 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-05 23:26:22,380 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-09-05 23:26:22,937 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-09-05 23:26:23,168 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-09-05 23:26:23,857 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-05 23:26:23,865 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-05 23:26:25,368 WARN  [restartedMain] org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration:
-
-Using generated security password: e95d7366-2402-4366-b88c-e303d06efda4
-
-This generated password is for development use only. Your security configuration must be updated before running your application in production.
-
-2023-09-05 23:26:25,480 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-05 23:26:25,630 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f4e211d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6bd3a576, org.springframework.security.web.context.SecurityContextPersistenceFilter@3d0b0058, org.springframework.security.web.header.HeaderWriterFilter@79d97052, org.springframework.web.filter.CorsFilter@e2dbc3, org.springframework.security.web.authentication.logout.LogoutFilter@3297d729, com.ozgur.laboratoryreportingapplication.configuration.TokenFilter@465983d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44d42e3a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22a35c2a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f3ff0d6, org.springframework.security.web.session.SessionManagementFilter@38ebfcc6, org.springframework.security.web.access.ExceptionTranslationFilter@5c1f77ce, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@10d377d2]
-2023-09-05 23:26:25,949 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
-2023-09-05 23:26:25,974 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-2023-09-05 23:26:25,987 INFO  [restartedMain] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplication:Started LaboratoryReportingApplication in 22.988 seconds (JVM running for 23.657)
-2023-09-05 23:26:26,028 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
-2023-09-05 23:26:42,367 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-05 23:26:42,618 INFO  [http-nio-8080-exec-2] com.ozgur.laboratoryreportingapplication.auth.AuthService:User logged in with username admin
-2023-09-05 23:32:58,015 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-09-05 23:32:58,018 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
-2023-09-05 23:32:58,019 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+2024-09-01 00:17:22,412 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-01 00:17:22,542 INFO  [main] org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping:Adding welcome page: class path resource [static/index.html]
+2024-09-01 00:17:22,939 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2d7df55, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@674c01ce, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b888692, org.springframework.security.web.header.HeaderWriterFilter@43d2c8e3, org.springframework.web.filter.CorsFilter@4b8ba6b7, org.springframework.security.web.authentication.logout.LogoutFilter@72155315, com.ozgur.laboratoryreportingapplication.configuration.TokenFilter@5d10e2b6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@352d3749, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a3e8b68, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@509e0253, org.springframework.security.web.session.SessionManagementFilter@23a9400c, org.springframework.security.web.access.ExceptionTranslationFilter@6408a8ac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f09d998]
+2024-09-01 00:17:23,582 INFO  [main] com.ozgur.laboratoryreportingapplication.LaboratoryReportingApplicationTests:Started LaboratoryReportingApplicationTests in 6.755 seconds (JVM running for 9.048)
+2024-09-01 00:17:23,687 INFO  [scheduling-1] com.ozgur.laboratoryreportingapplication.auth.AuthService:0 expired tokens have been cleaned up.
+2024-09-01 00:17:27,487 WARN  [main] com.ozgur.laboratoryreportingapplication.service.ReportService:A report has been saved by laborant testUsername
+2024-09-01 00:17:27,495 WARN  [main] com.ozgur.laboratoryreportingapplication.service.ReportService:The report with id 1 has been deleted by laborant testUsername
+2024-09-01 00:17:27,508 WARN  [main] com.ozgur.laboratoryreportingapplication.service.ReportService:The report with id 1 has been updated by laborant testUsername
+2024-09-01 00:17:27,640 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-01 00:17:27,643 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+2024-09-01 00:17:27,648 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
